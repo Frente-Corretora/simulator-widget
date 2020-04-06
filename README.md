@@ -44,7 +44,7 @@ class Agent {
 Note que passamos para essa variável uma *string*, cuja qual é o seu nome de parceiro que irá aparecer na URL de redirecionamento.
 
 4. Altere somente o nome, inserindo o seu ID Simple, e salve o arquivo.
-> Exemplo:  this.correspondent_identifier = 'frente'; // Nome do seu correspondente ID
+> Exemplo:  this.correspondent_identifier = 'frente';
 
 Agora vamos alterar o correspondentId *integer*.
 
@@ -53,7 +53,7 @@ Agora vamos alterar o correspondentId *integer*.
 class Exchange {
   constructor() {
     this.baseUrl = 'https://api.frentecorretora.com.br'; // URL de requisição da API
-    this.correspondentId = 'correspondentId=94'; // Número do seu correspondente ID
+    this.correspondentId = 'correspondentId=1'; // Número do seu correspondente ID
     this._exchangeData = null;
     this._remittanceData = null;
   }
@@ -63,7 +63,7 @@ class Exchange {
 Passamos para essa variável uma *string* que dentro inclui nosso número de **correspondentId**.
 
 6. Altere somente o número, inserindo o seu ID Simple, e salve o arquivo.
-> Exemplo: this.correspondentId = 'correspondentId=4'; // Número do seu correspondente ID
+> Exemplo: this.correspondentId = 'correspondentId=1'; 
 
 Com isso você já terá seu simulador externo funcionando corretamente e integrado com o seu próprio Simple! Basta inserir o widget no seu site onde preferir.
 
