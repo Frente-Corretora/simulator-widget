@@ -74,7 +74,9 @@ Com isso você já terá seu simulador externo funcionando corretamente e integr
 ### Personalização
 O simulador vem com cores e um layout pronto pra você só instalar seu widget e usar, mas é claro que com algumas alterações no CSS você pode adaptar as cores para o padrão do seu site. Basta realizar as alterações desejadas, salvar e subir a pasta para o diretório de plugins **wp-content/plugins**. 
 
-As principais classes estão detalhadas com comentários e você pode trocar pelas cores que quiser, ou até mesmo alterar o formato e ordem dos elementos HTML. O formulário HTML com todos os campos está na raiz do projeto, no arquivo **form-simulator.php** 
+As principais classes estão detalhadas com comentários e você pode trocar pelas cores que quiser, ou até mesmo alterar o formato e ordem dos elementos HTML.  
+O formulário HTML com todos os campos está na raiz do projeto, no arquivo **form-simulator.php** 
+
 Exemplos:
 <p align="center">
 <img src="https://cdn.cambioonline.com.br/2020/04/06152720/colagem_simuladores.jpg">
