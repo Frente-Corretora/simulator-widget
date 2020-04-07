@@ -4,23 +4,19 @@
 
     <!-- Init Materialize and Material components: TAB AND SELECT-->
 
-    <script>
-
-    document.addEventListener('DOMContentLoaded', function () {
+  <script>
+  window.initSelects = () => {
     window.remittance = window.mdc.select.MDCSelect.attachTo(document.getElementById('remittance-ul'));
     window.beneficiary = window.mdc.select.MDCSelect.attachTo(document.getElementById('beneficiary-ul'));
     window.remittanceType = window.mdc.select.MDCSelect.attachTo(document.getElementById('remittance-type-ul'));
     window.merchant = window.mdc.select.MDCSelect.attachTo(document.getElementById('merchant-ul'));
     window.exchange = window.mdc.select.MDCSelect.attachTo(document.getElementById('exchange-ul'));
-
-        var el = document.querySelector('.tabs'); // tabs
-        var instance = M.Tabs.init(el, {}); // tabs
-
-        var elems = document.querySelectorAll('.tooltipped'); // tooltip
-        var instances = M.Tooltip.init(elems, {}); // tooltip
-					 
-	});
-    </script>
+      var el = document.querySelector('.tabs'); // tabs
+      var instance = M.Tabs.init(el, {}); // tabs
+      var elems = document.querySelectorAll('.tooltipped'); // tooltip
+      var instances = M.Tooltip.init(elems, {}); // tooltip	
+  }
+  </script>
 
   <!-- Wrap -->
   <div class="row">

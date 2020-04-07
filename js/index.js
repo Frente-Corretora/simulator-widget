@@ -1,10 +1,16 @@
+let _$ = jQuery;
+
 (function ($) {
   'use strict';
-
+  
   // ********* Document Ready *********
 
   $(document).ready(function () {
 
+    // $.noConflict();
+    // console.log(window.initSelects);
+    window.initSelects();
+    
     // Prevent submit form when enter key is pressed
     $(window).keydown(function (event) {
       if (event.keyCode == 13) {

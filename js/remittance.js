@@ -17,21 +17,21 @@ function delayedGetRemittance(reverse) {
 
 // ********* Remittance Simulation *********
 async function getRemittanceData(reverse = true) {
-  $('#remittance-action-btn').attr('disabled', true);
+  _$('#remittance-action-btn').attr('disabled', true);
   let purposeCode = window.beneficiary.value;
   let remittanceType = window.remittanceType.value;
   let remittanceBRLValue = '';
 
   // Reverse route
   if (!reverse) {
-    remittanceBRLValue = $('input#remittance-result').val();
+    remittanceBRLValue = _$('input#remittance-result').val();
   } else {
-    remittanceBRLValue = $('input#remittance-value').val();
+    remittanceBRLValue = _$('input#remittance-value').val();
   }
 
   const currencyCode = window.remittance.value;
 
-  $('label#currency-symbol-remittance-value').html(currencyCode);
+  _$('label#currency-symbol-remittance-value').html(currencyCode);
   const value = transformToInteger(remittanceBRLValue, 4);
 
   if (remittanceType === '') {
@@ -53,20 +53,20 @@ async function getRemittanceData(reverse = true) {
 
   // Outbound: 
   if (remittanceType === 'outbound' && clamp === "MINIMUM") {
-    $('input#remittance-value').val(outboundMinValue);
-    // alert("O valor mínimo de envio é de $$$");
+    _$('input#remittance-value').val(outboundMinValue);
+    // alert("O valor mínimo de envio é de _$_$_$");
     M.toast({ html: 'O valor mínimo de envio é de ' + currencyCodeRemittance + ' ' + outboundMinValue });
   } else if (remittanceType === 'outbound' && clamp === "MAXIMUM") {
-    $('input#remittance-value').val(remittanceMaxValue);
+    _$('input#remittance-value').val(remittanceMaxValue);
     M.toast({ html: 'O valor máximo de envio é de ' + currencyCodeRemittance + ' ' + remittanceMaxValue });
   }
 
   // Inbound
   if (remittanceType === 'inbound' && clamp === "MINIMUM") {
-    $('input#remittance-value').val(outboundMinValue);
+    _$('input#remittance-value').val(outboundMinValue);
     M.toast({ html: 'O valor mínimo de recebimento é de ' + currencyCodeRemittance + ' ' + inboundMinValue });
   } else if (remittanceType === 'inbound' && clamp === "MAXIMUM") {
-    $('input#remittance-value').val(remittanceMaxValue);
+    _$('input#remittance-value').val(remittanceMaxValue);
     M.toast({ html: 'O valor máximo de recebimento é de ' + currencyCodeRemittance + ' ' + remittanceMaxValue });
   }
 
@@ -86,7 +86,7 @@ async function getRemittanceData(reverse = true) {
 
   populateVet(price.withTax.value / price.withTax.divisor);
   if (typeof bankFeeBRL === 'undefined') {
-    $('span#bankFeelBRL').html('0,00');
+    _$('span#bankFeelBRL').html('0,00');
   } else {
     populateBankFeelBRL(bankFeeBRL.value / bankFeeBRL.divisor);
   }
@@ -94,15 +94,15 @@ async function getRemittanceData(reverse = true) {
 }
 
 function populateQuotation(quoatation) {
-  $('span#priceWithoutTax').html(quoatation);
+  _$('span#priceWithoutTax').html(quoatation);
 }
 
 function populateVet(vet) {
-  $('span#priceWithTax').html(vet);
+  _$('span#priceWithTax').html(vet);
 }
 
 function populateBankFeelBRL(bankFeeBRL) {
-  $('span#bankFeelBRL').html(bankFeeBRL);
+  _$('span#bankFeelBRL').html(bankFeeBRL);
 }
 
 
@@ -113,18 +113,18 @@ function simulateRemittance(offer, iof, reverse) {
 
   const convertedValue = (offer.value / offer.divisor);
   if (reverse) {
-    $('input#remittance-result').val(convertedValue.toFixed(2));
+    _$('input#remittance-result').val(convertedValue.toFixed(2));
   } else {
-    $('input#remittance-value').val(convertedValue.toFixed(2));
+    _$('input#remittance-value').val(convertedValue.toFixed(2));
   }
 
   const iofPercentage = iof.percentage;
   const iofValue = (iof.total.value / iof.total.divisor);
 
-  $('span#remittance-iof').html(iofPercentage);
-  $('span#remittance-with-iof').html(iofValue.toFixed(2));
+  _$('span#remittance-iof').html(iofPercentage);
+  _$('span#remittance-with-iof').html(iofValue.toFixed(2));
 
-  $('#remittance-action-btn').removeAttr('disabled');
+  _$('#remittance-action-btn').removeAttr('disabled');
 }
 
 
@@ -143,17 +143,17 @@ function getBeneficiaries() {
   ];
 
   for (const option of remittanceOptions) {
-    const result = $(`<li class="mdc-list-item" data-value=${option.value} data-text=${option.label}></li>`)
+    const result = _$(`<li class="mdc-list-item" data-value=${option.value} data-text=${option.label}></li>`)
       .html(option.label);
 
-    $('#remittance-beneficiary').append(result);
+    _$('#remittance-beneficiary').append(result);
   }
 
   for (const option of remittanceType) {
-    const result = $(`<li class="mdc-list-item" data-value=${option.value} data-text=${option.label}></li>`)
+    const result = _$(`<li class="mdc-list-item" data-value=${option.value} data-text=${option.label}></li>`)
       .html(option.label);
 
-    $('#remittance-type').append(result);
+    _$('#remittance-type').append(result);
   }
 
   window.beneficiary.selectedIndex = '1';
@@ -169,16 +169,16 @@ function getOutboundCurrencies () {
     { currencyName: 'Euro', currency: 'EUR', image: "https://s3.amazonaws.com/frente-exchanges/flags/european-union.svg" }
   ];
 
-  ($('#remittance-currencies').children().remove());
+  (_$('#remittance-currencies').children().remove());
 
   for (const currency of remittanceCurrenciesOutbound) {
-    const remittanceCurrenciesOutbound = $(
+    const remittanceCurrenciesOutbound = _$(
       `<li class="mdc-list-item" data-value=${currency.currency} data-text=${currency.currencyName.replace(/ /g, '')} data-icon=${currency.image}>
       </li>`
     )
       .html(` <img width="22px" src=${currency.image}></img> &nbsp; ${currency.currencyName}`);
 
-    $('#remittance-currencies').append(remittanceCurrenciesOutbound);
+    _$('#remittance-currencies').append(remittanceCurrenciesOutbound);
   }
 
   delayedGetRemittance();
@@ -195,16 +195,16 @@ function getInboundCurrencies() {
     { currencyName: 'Libra Esterlina', currency: 'GBP', image: "https://s3.amazonaws.com/frente-exchanges/flags/united-kingdom.svg"}
   ];
 
-  ($('#remittance-currencies').children().remove());
+  (_$('#remittance-currencies').children().remove());
 
   for (const currency of remittanceCurrenciesInbound) {
-      const remittanceCurrenciesInbound = $(
+      const remittanceCurrenciesInbound = _$(
       `<li class="mdc-list-item" data-value=${currency.currency} data-text=${currency.currencyName.replace(/ /g, '')} data-icon=${currency.image}>
       </li>`
     )
       .html(` <img width="22px" src=${currency.image}></img> &nbsp; ${currency.currencyName}`);
 
-    $('#remittance-currencies').append(remittanceCurrenciesInbound);
+    _$('#remittance-currencies').append(remittanceCurrenciesInbound);
 
   }
 
