@@ -23,7 +23,7 @@ class Agent {
 				console.error(e);
 			}
 		} else {
-			return $.getJSON(url, function (result) {
+			return _$.getJSON(url, function (result) {
 				const data = result;
 				this._agentData = data;
 				resolve(this._agentData);
@@ -41,9 +41,9 @@ class Agent {
 		}
 
 		for (const agent of this._agentData) {
-			const option = $(`<li class="mdc-list-item" data-value=${agent.vuoriId} data-state=${agent.state}></li>`)
+			const option = _$(`<li class="mdc-list-item" data-value=${agent.vuoriId} data-state=${agent.state}></li>`)
 				.html(agent.label);
-			$('#state').append(option);
+				_$('#state').append(option);
 		};
 		window.merchant.selectedIndex = '0'; // Set index 1st agent
 	}

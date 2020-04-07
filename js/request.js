@@ -29,7 +29,7 @@ class Exchange {
 			}
 		} else {
 			return new Promise((resolve, reject) => {
-				$.getJSON(url, function (result) {
+				_$.getJSON(url, function (result) {
 					const data = result;
 					this._exchangeData = data;
 					resolve(this._exchangeData);
@@ -59,7 +59,7 @@ class Exchange {
 			}
 		} else {
 			return new Promise((resolve, reject) => {
-				$.getJSON(url, function (result) {
+				_$.getJSON(url, function (result) {
 					const data = result;
 					this._exchangeData = data;
 					resolve(this._exchangeData);
@@ -93,7 +93,7 @@ class Exchange {
 			}
 		} else {
 			return new Promise((resolve, reject) => {
-				$.getJSON(url, function (result) {
+				_$.getJSON(url, function (result) {
 					const data = result;
 					this._remittanceData = data;
 					resolve(this._remittanceData);
@@ -113,11 +113,11 @@ class Exchange {
 		}
 
 		for (const currency of this._exchangeData) {
-			const option = $(`<li class="mdc-list-item" data-value=${currency.currencyCode} data-text=${currency.currencyName.replace(/ /g, '')} data-icon=${currency.countryFlagUrl}>
+			const option = _$(`<li class="mdc-list-item" data-value=${currency.currencyCode} data-text=${currency.currencyName.replace(/ /g, '')} data-icon=${currency.countryFlagUrl}>
 					</li>`
 			)
 				.html(` <img width="22px" src=${currency.countryFlagUrl}></img> &nbsp; ${currency.currencyName}`);
-			$('#paper-money-currencies').append(option);
+			_$('#paper-money-currencies').append(option);
 		}
 		window.exchange.selectedIndex = '0'; // Set index 1st
 	}

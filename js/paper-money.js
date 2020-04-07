@@ -3,8 +3,6 @@ const exchange = new Exchange();
 const agent = new Agent();
 
 
-
-
 // ********* Fetch Quoatations *********
 function updateTicker(vuoriId) {
   'use strict';
@@ -13,12 +11,12 @@ function updateTicker(vuoriId) {
     .then(response => {
       const data = response;
 
-      exchange.populateCurrencies($('#paper-money-currencies'));
+      exchange.populateCurrencies(_$('#paper-money-currencies'));
 
-      $('#agentId').val(vuoriId);
-      $("#state").val($("#state option:selected").val());
+      _$('#agentId').val(vuoriId);
+      _$("#state").val(_$("#state option:selected").val());
 
-      $('#exchange-button').removeAttr('disabled');
+      _$('#exchange-button').removeAttr('disabled');
     })
     .catch(error => {
       console.error(error);
@@ -30,9 +28,9 @@ function getAgent() {
   agent.fetchData()
     .then(response => {
       const data = response;
-      agent.populateAgent($('#state'));
+      agent.populateAgent(_$('#state'));
       const val = data[0].vuoriId;
-      $('ul#state').val(val);
+      _$('ul#state').val(val);
       updateTicker(val);
     })
     .catch(error => {
@@ -84,9 +82,9 @@ async function simulateExchange(reverse = false) {
   let value = '';
 
   if (reverse) {
-    value = $('input#paper-money-result').val()
+    value = _$('input#paper-money-result').val()
   } else {
-    value = $('input#paper-money-value').val();
+    value = _$('input#paper-money-value').val();
   }
 
   const valueAsInteger = Math.trunc(value * 100);
@@ -106,18 +104,18 @@ async function simulateExchange(reverse = false) {
 
   let timer;
 
-  $('label#currency-symbol-exchange-value').html(currencySymbolExchange);
+  _$('label#currency-symbol-exchange-value').html(currencySymbolExchange);
 
   //-- Validate: Rounding method - min and max values for PAPER MONEY.
 
   if (rounding.method === "MINIMUM" && rounding.rounded) { // MINIMUM 
-    $('input#paper-money-value').val(minValue);
+    _$('input#paper-money-value').val(minValue);
     M.toast({ html: 'O valor mínimo de compra para ' + currencyCode + ' é de: ' + minValue });
   } else if (rounding.method === "MAXIMUM" && rounding.rounded) { // MAXIMUM
-    $('input#paper-money-value').val(maxValue);
+    _$('input#paper-money-value').val(maxValue);
     M.toast({ html: 'Limite de ' + currencySymbolExchange + ' ' + maxValue + ' excedido! Não é possível realizar transações acima deste valor através da plataforma. Entre em contato com a nosssa mesa de operações para maiores informações ou troque o valor desejado: (11) 9662-75419' });
   } else if (rounding.method === "NORMAL" && rounding.rounded) { // NORMAL
-    $('input#paper-money-value').val(currency.offer);
+    _$('input#paper-money-value').val(currency.offer);
     M.toast({ html: `Sua quantia foi arredondada pois não é um múltiplo das cédulas disponíveis: ${multiples.map(m => m)}` });
   }
 
@@ -129,11 +127,11 @@ async function simulateExchange(reverse = false) {
   const quoatationValue = (price.withoutTax.value / price.withoutTax.divisor);
 
   // Paper Money result
-  $('input#paper-money-result').val(convertedValue.toFixed(2));
+  _$('input#paper-money-result').val(convertedValue.toFixed(2));
 
   // Paper Money fee labels
-  $('span#exchange-iof').html(tax.iof.percentage);
-  $('span#exchange-with-iof').html(iofValue.toFixed(2));
-  $('span#vet-exchange').html(vetValue);
-  $('span#quoation-exchange').html(quoatationValue);
+  _$('span#exchange-iof').html(tax.iof.percentage);
+  _$('span#exchange-with-iof').html(iofValue.toFixed(2));
+  _$('span#vet-exchange').html(vetValue);
+  _$('span#quoation-exchange').html(quoatationValue);
 }
