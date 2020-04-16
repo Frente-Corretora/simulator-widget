@@ -1,3 +1,5 @@
+// let _$ = $ || jQuery;
+
 let remittanceRequestTimer;
 
 function delayedGetRemittance(reverse) {

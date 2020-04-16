@@ -1,3 +1,6 @@
+// let _$ = $ || jQuery;
+
+
 class Exchange {
 
 	constructor () {
