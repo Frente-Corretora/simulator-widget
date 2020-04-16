@@ -4,7 +4,7 @@
 
 	$(document).ready(function () {
 		/**
-		 * Exchange simulator submit
+		 * Paper Money simulator submit
 		*/
 		$("#exchange").on('submit', e => {
 			e.preventDefault();
