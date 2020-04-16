@@ -65,6 +65,28 @@ Passamos para essa variável uma *string* que dentro inclui nosso número de **c
 6. Altere somente o número, inserindo o seu ID Simple, e salve o arquivo.
 > Exemplo: this.correspondentId = 'correspondentId=1'; 
 
+Por último vamos realizar uma alteração no arquivo de submissão, localizado em **js/submit.js**.<br>
+Ao clicar no botão **"SIMULE AGORA"**, duas rotas são geradas. De acordo com cada tipo de operação há uma rota, sendo uma para Papel Moeda e outra para Remessa. Com essa rota conseguimos passar para o Simple os valores que o usuário inseriu no simulador e mantê-los do outro lado.
+
+7. Nas linhas **15** e **28** do arquivo, na variável *const url*, iremos alterar na URL o mesmo **correspondent_identifier** que inserimos no passo 4.
+```javascript
+/**
+* Paper Money simulator submit
+*/
+$("#exchange").on('submit', e => {
+const url = `https://iamsimple.com.br/frente/app/checkout/paper-money?${query}&agentId=${merchantId}&productId=${currencyCode}`;
+});
+
+/** 
+* Remittance simulator submit
+*/
+$("#remittance").on('submit', e => {
+const url = `https://iamsimple.com.br/frente/app/checkout/remittance?remittance=true&${query}&purposeCode=${purposeCode}&currencyCode=${currencyCode}&remittanceType=${remittanceType}`;
+});
+```
+Após a url https://iamsimple.com.br é onde se deve realizar a alteração, incluindo o seu **correspondent_identifier**
+> Exemplo: https://iamsimple.com.br/seuidentificador
+
 Com isso você já terá seu simulador externo funcionando corretamente e integrado com o seu próprio Simple! Basta inserir o widget no seu site onde preferir.
 
 <p align="center">
