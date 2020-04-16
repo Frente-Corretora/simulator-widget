@@ -1,3 +1,5 @@
+// let _$ = $ || jQuery;
+
 class Agent {
 	constructor() {
 		this.baseUrl = `https://api.frentecorretora.com.br`; // API url

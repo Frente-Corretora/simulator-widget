@@ -1,27 +1,27 @@
-@import url('https://fonts.googleapis.com/css?family=Comfortaa&display=swap'); /* Fonte utilizada */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
   /* Typography */
   body {
-    background-color: #f0eeeee1;
-    font-family: 'Comfortaa', cursive;        
+    font-family: 'Raleway', sans-serif;        
     color: #898989;
   }
 
   p {
-    font-size: 12px;
+    font-size: 12px !important;
   }
 
   p.beneficiary  {
-    color: #1d7d74; /* Cor do texto do label que fica acima de cada select. Exemplo: "Tipo de remessa" */
+    color: #0c4873; /* Cor do texto do label que fica acima de cada select. Exemplo: "Tipo de remessa" */
     font-weight: 700;
+	font-size: 15px;
   }
 
   /* Global label */
   .global-label {
-    background-color: #1d7d74; /* Cor de fundo do label global, que exibe o ícone da moeda BRL escrito "Real" */
+    background-color: #0c4873; /* Cor de fundo do label global, que exibe o ícone da moeda BRL escrito "Real" */
     color: #ffffff; /* Cor do texto do label global */
     font-weight: 500;
-    font-size: 13px;
+    font-size: 15px;
     text-align: center;
     border-radius: 5px;
     width: 100%;
@@ -30,8 +30,9 @@
 
   /* Label for currencies Symbol */
   .label-symbol {
-    font-size: 12px; 
-    font-weight: 800;
+    font-size: 15px; 
+    font-weight: 600;
+	color: #8a8888;
     /* Exibe o código de cada moeda ao lado do valor. Exemplo: USD, EUR, BRL */
   }
 
@@ -61,7 +62,7 @@
   i.fas,
   i.far,
   i.fab {
-  color: #fa693f; /* Define a cor dos ícones que exibe as informações de taxas. Exemplo: VET, COTAÇÃO... */
+  color: #0098a4; /* Define a cor dos ícones que exibe as informações de taxas. Exemplo: VET, COTAÇÃO... */
 }
 
 /*
@@ -79,10 +80,11 @@
 }
 .mdc-select__selected-text {
   min-width: 100% !important;
-  font-family: 'Comfortaa', cursive !important;
-  background-color: #1d7d74 !important;   /* Cor de fundo dos selects coloridos (Moedas) */
+  font-family: 'Raleway', sans-serif !important;
+  font-weight: 500 !important;
+  background-color: #0c4873 !important;   /* Cor de fundo dos selects coloridos (Moedas) */
   border-radius: 5px;
-  font-size: 13px !important;
+  font-size: 15px !important;
   display: inline-block;
   justify-content: flex-start;
   align-items: center;
@@ -106,8 +108,8 @@
 #exchange-value-input,
 #exchange-result-input,
 .square-input {
-  border-top: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #8a8888;
+  border-bottom: 1px solid #8a8888;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -131,12 +133,13 @@
 
 .mdc-menu .mdc-list {
   color: white !important;  /* Cor do texto da lista nos selects coloridos (Moedas) */
-  font-size: 13px !important; 
-  font-family: 'Comfortaa', cursive !important;
+  font-size: 15px !important; 
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500 !important;
 }
 
 .mdc-menu-surface {
-  background-color: #1d7d74 !important; /* Cor do plano de fundo das listas nos selects coloridos (Moedas) */
+  background-color: #0c4873 !important; /* Cor do plano de fundo das listas nos selects coloridos (Moedas) */
 }
 
 .mdc-select__menu .mdc-list .mdc-list-item--selected {
@@ -183,8 +186,9 @@
 
 #beneficiary-ul .mdc-menu .mdc-list {
   color: #585858 !important; /* Cor do texto da lista nos selects transparentes (Beneficiário) */
-  font-size: 13px !important;
-  font-family: 'Comfortaa', cursive !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;  
+  font-family: 'Raleway', sans-serif;
   background-color: #f0f0f0; /* Cor de fundo da lista nos selects transparentes (Beneficiário) */
 }
 
@@ -205,8 +209,8 @@
 
 #merchant-ul .mdc-menu .mdc-list {
   color: #585858 !important; /* Cor do texto na lista nos selects transparentes (Cidade) */
-  font-size: 13px !important;
-  font-family: 'Comfortaa', cursive !important;
+  font-size: 15px !important;
+  font-family: 'Raleway', sans-serif;
   background-color: #f0f0f0; /* Cor de fundo da lista nos selects transparentes (Cidade) */
 }
 
@@ -223,8 +227,8 @@
 
 #remittance-type-ul .mdc-menu .mdc-list {
   color: #585858 !important; /* Cor do texto na lista nos selects transparentes (Tipo de remessa) */
-  font-size: 13px !important;
-  font-family: 'Comfortaa', cursive !important;
+  font-size: 15px !important;
+  font-family: 'Raleway', sans-serif;
   background-color: #f0f0f0; /* Cor de fundo da lista nos selects transparentes (Tipo de remessa) */
 }
 
@@ -260,9 +264,85 @@ border-bottom-color: transparent !important;
   z-index: 1;
 }
 
+/* TABS */
+.content {
+	display: none;
+}
+
+.content--active {
+	display: block;
+}
+
+.mdc-tab {
+	font-family: 'Raleway', sans-serif !important;
+	height: 52px !important;
+	background-color: #dfdfdf !important; /* Cor do plano de fundo da tab inativa */
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+	flex: 0 0 auto !important;
+}
+
+.mdc-tab:nth-last-child(odd) {
+	margin-left: 13px;
+}
+
+.mdc-tab:hover {
+	color: #ffffff !important;
+}
+
+.mdc-tab:hover {
+    background-color: #0c4873 !important; /* Cor do plano de fundo da tab inativa, on hover */
+	color: #ffffff !important;
+}
+
+.mdc-tab--active {
+    background-color: #0c4873 !important; /* Cor do plano de fundo da tab ativa */
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+
+.mdc-tab__text-label {
+    color: #585858 !important; /* Cor do texto da tab inativa */
+	text-transform: none !important;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 500;
+}
+
+.mdc-tab:hover .mdc-tab__text-label {
+	color: #ffffff !important; /* Cor do texto da tab inativa, on hover */
+}
+
+.mdc-tab--active .mdc-tab__text-label {
+    color: #ffffff !important; /* Cor do texto da tab ativa */
+	text-transform: none !important;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 500;
+}
+
+.mdc-tab-indicator .mdc-tab-indicator__content--underline {
+    border-top-width: 0px !important;
+}
+
+
+
 /* Apply transform effect between outbound and inbound select */
 /* Se atente para os pixels das posições, pois pode variar de acordo com o local em que você posicionar o seu simulador. */
 .outbound-down {
+  -webkit-transform: translateY(233px);
+  transform: translateY(233px);
+  transition-duration: 500ms;
+}
+
+.inbound-up {
+  -webkit-transform: translateY(-233px);
+  transform: translateY(-233px);
+  transition-duration: 500ms;
+}
+
+.transition-up {
+  transition-duration: 500ms;
+}
+/* .outbound-down {
   -webkit-transform: translateY(210px); 
   transform: translateY(175px);
   transition-duration: 500ms;
@@ -276,21 +356,5 @@ border-bottom-color: transparent !important;
 
 .transition-up {
   transition-duration: 500ms;
-}
-/* 
-.outbound-down {
-  -webkit-transform: translateY(210px);
-  transform: translateY(210px);
-  transition-duration: 500ms;
-}
+} */
 
-.inbound-up {
-  -webkit-transform: translateY(-210px);
-  transform: translateY(-210px);
-  transition-duration: 500ms;
-}
-
-.transition-up {
-  transition-duration: 500ms;
-}
- */

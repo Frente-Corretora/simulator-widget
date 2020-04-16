@@ -7,9 +7,13 @@ let _$ = jQuery;
 
   $(document).ready(function () {
 
-    // $.noConflict();
-    // console.log(window.initSelects);
-    window.initSelects();
+    if (typeof window.initSelects === 'function') {
+      window.initSelects();
+    }
+
+    if (typeof window.merchant === 'undefined') {
+      return true;
+    }
     
     // Prevent submit form when enter key is pressed
     $(window).keydown(function (event) {

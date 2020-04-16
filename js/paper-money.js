@@ -1,3 +1,6 @@
+// let _$ = $ || jQuery;
+
+
 let state = 'SP';
 const exchange = new Exchange();
 const agent = new Agent();

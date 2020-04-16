@@ -2,43 +2,69 @@
 
 ?>
 
-    <!-- Init Materialize and Material components: TAB AND SELECT-->
-
-  <script>
-  window.initSelects = () => {
+ <!-- Init Materialize and Material components: TAB AND SELECT-->
+<script>
+	// Instance selects
+  	window.initSelects = () => {
     window.remittance = window.mdc.select.MDCSelect.attachTo(document.getElementById('remittance-ul'));
     window.beneficiary = window.mdc.select.MDCSelect.attachTo(document.getElementById('beneficiary-ul'));
     window.remittanceType = window.mdc.select.MDCSelect.attachTo(document.getElementById('remittance-type-ul'));
     window.merchant = window.mdc.select.MDCSelect.attachTo(document.getElementById('merchant-ul'));
     window.exchange = window.mdc.select.MDCSelect.attachTo(document.getElementById('exchange-ul'));
-      var el = document.querySelector('.tabs'); // tabs
-      var instance = M.Tabs.init(el, {}); // tabs
-      var elems = document.querySelectorAll('.tooltipped'); // tooltip
-      var instances = M.Tooltip.init(elems, {}); // tooltip	
+		
+	// Instance TABS
+	var tabBar = new mdc.tabBar.MDCTabBar(document.querySelector('.mdc-tab-bar'));
+    var contentEls = document.querySelectorAll('.content');
+    tabBar.listen('MDCTabBar:activated', function (event) {
+      // Hide currently-active content
+      document.querySelector('.content--active').classList.remove('content--active');
+      // Show content for newly-activated tab
+      contentEls[event.detail.index].classList.add('content--active');
+    }); 
+		
+	// Instance Tooltip
+	var elems = document.querySelectorAll('.tooltipped');
+	var instances = M.Tooltip.init(elems, {});
   }
-  </script>
+</script>
 
   <!-- Wrap -->
   <div class="row">
-    <div class="col s12">
-      <ul class="tabs">
-        <!-- Remittance tab -->
-        <li class="tab col s4" style="width: auto;">
-          <a class="active" id="remittance-tab" href="#remittance">Remessa</a>
-        </li>
-
-        <!-- Paper Money tab -->
-        <li class="tab col s4" style="width: auto;">
-          <a href="#paper-money" id="exchange-tab">Papel Moeda</a>
-        </li>
-      </ul>
+    <div class="col s12" style="border-bottom: 1px solid #8a8888; padding: 0;">
+	  <div class="mdc-tab-bar" role="tablist">
+		<div class="mdc-tab-scroller">
+		  <div class="mdc-tab-scroller__scroll-area">
+			<div class="mdc-tab-scroller__scroll-content">
+			  <button class="mdc-tab mdc-tab--active" role="tab" aria-selected="true" tabindex="0">
+				<span class="mdc-tab__content">
+				  <span class="mdc-tab__text-label">Remessa</span>
+				</span>
+				<span class="mdc-tab-indicator mdc-tab-indicator--active">
+				  <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+				</span>
+				<span class="mdc-tab__ripple"></span>
+			  </button>
+			  <button class="mdc-tab mdc-tab" role="tab" aria-selected="true" tabindex="0">
+				<span class="mdc-tab__content">
+				  <span class="mdc-tab__text-label">Papel Moeda</span>
+				</span>
+				<span class="mdc-tab-indicator mdc-tab-indicator">
+				  <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+				</span>
+				<span class="mdc-tab__ripple"></span>
+			  </button>
+			</div>
+		  </div>
+    </div>
+  </div>
     </div>
 
     <!----------------------------- Remittance Content ----------------------------->
     <div class="col s12">
 
-      <form id="remittance">
-
+	<div class="content content--active">
+	
+		<form id="remittance">
         <!-- Column 1 & 2: Label for remittance type and beneficiary -->
         <div class="row" style="margin-top: 1vw;">
           <!-- Remittance type -->
@@ -125,7 +151,6 @@
               data-tooltip="Esse é o valor final da cotação, somada com todas as tarifas e impostos."></i> VET = R$
             <span id="priceWithTax"></span>
             </p>
-            </label>
           </div>
         </div>
 
@@ -154,18 +179,20 @@
         <!--Simulate button -->
         <div class="row">
           <div class="col s12">
-            <button submit id="remittance-action-btn" class="waves-effect waves-light btn-large">SIMULE AGORA</a>
+            <button submit id="remittance-action-btn" class="waves-effect waves-light btn-large">SIMULE AGORA</button>
           </div>
         </div>
       </form>
+	</div>
     </div>
 
 
 
 
     <!----------------------------- Paper Money ----------------------------->
-    <div id="paper-money" class="col s12">
-
+    <div class="col s12">
+ 
+	<div class="content">
       <form id="exchange">
 
         <!-- Column 1 & 2: Location/Agent label and location/agent selector -->
@@ -257,11 +284,13 @@
         <!-- Simulate button -->
         <div class="row">
           <div class="col s12">
-            <button submit id="exchange-button" class="waves-effect waves-light btn-large">SIMULE AGORA</a>
+            <button submit id="exchange-button" class="waves-effect waves-light btn-large">SIMULE AGORA</button>
           </div>
         </div>
-
       </form>
+  	</div>
+
     </div>
-  </div>
+	  
+  </div> <!-- END MAIN ROW -->
 
