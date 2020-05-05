@@ -1,6 +1,9 @@
 # [WIP] Widget de simulador externo para WordPress
 Este é um trabalho em progresso para a criação de um Widget de simulador de moedas externo da plataforma Simple, para CMS WordPress.
 
+## Change log
+[Clique aqui para acessar o histórico de correções.](https://github.com/Frente-Corretora/simulator-widget/blob/master/change-log.md)
+
 ## Sobre o widget
 O objetivo desse widget é proporcionar implementação agilizada de um simulador de moedas externo para os parceiros da plataforma Simple que possuem um website em WordPress.  
 O simulador conta com a funcionalidade de compra de papel moeda, envio e recebimento de remessas internacionais e redirecionamento para a Simple do próprio parceiro.
