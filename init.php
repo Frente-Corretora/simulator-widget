@@ -4,7 +4,7 @@
 Plugin Name: Simulator Widget
 Plugin URI: https://www.frentecorretora.com.br
 Description: A simple widget for external simulator with paper money and remittance integration from Simple Plataform by Frente Corretora de Câmbio LTDA.
-Version: 1.0.9
+Version: 1.0.2
 Author: Frente Corretora 
 Author URI: https://www.frentecorretora.com.br
 License: The MIT License (MIT) Copyright © 2020 Frente Corretora de Câmbio
@@ -16,7 +16,7 @@ function load_styles() {
     wp_enqueue_style( 'simulatorCss', plugins_url( 'css/main.min.css', __FILE__ ) );
     wp_enqueue_style( 'materializeMinCss', plugins_url( 'materialize/css/materialize.min.css', __FILE__ ) );
 
-    wp_register_style( 'material_web', 'https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.css' );
+    wp_register_style( 'material_web', 'https://unpkg.com/material-components-web@v5.0.0/dist/material-components-web.min.css' );
     wp_enqueue_style('material_web');
 }
 add_action('wp_enqueue_scripts', 'load_styles');
@@ -31,7 +31,7 @@ function load_scripts() {
     // Vendor
     wp_enqueue_script( 'jquery', plugin_dir_url( __FILE__ ) . 'materialize/js/jquery.min.js', false, false, false ); 
 
-    wp_register_script( 'material_components', 'https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js', false, false, true );
+    wp_register_script( 'material_components', 'https://unpkg.com/material-components-web@5.0.0/dist/material-components-web.min.js', false, false, true );
     wp_enqueue_script('material_components');
 
     wp_register_script( 'font_awesome', 'https://kit.fontawesome.com/9a64f37b30.js', false, false, true );
