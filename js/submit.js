@@ -25,7 +25,7 @@
 			const currencyCode = window.remittance.value;
 			const purposeCode = window.beneficiary.value;
 			const remittanceType = window.remittanceType.value;
-			const url = `https://iamsimple.com.br/frente/app/checkout/remittance?remittance=true&${query}&purposeCode=${purposeCode}&currencyCode=${currencyCode}&remittanceType=${remittanceType}`;
+			const url = `https://iamsimple.com.br/frente/app/checkout/remittance?remittance=true&${query}&purposeCode=${purposeCode}&currency=${currencyCode}&remittanceType=${remittanceType}`;
 			window.open(url, '_blank');
 		});
 

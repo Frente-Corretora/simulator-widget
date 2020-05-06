@@ -1,6 +1,3 @@
-// let _$ = $ || jQuery;
-
-
 class Exchange {
 
 	constructor () {
@@ -75,12 +72,12 @@ class Exchange {
 	}
 
   // ********* Remittance Request *********
-	async fetchRemittanceData(remittanceType = 'outbound', purposeCode = 'IR001', currencyCode, value, reverse = true) {
+	async fetchRemittanceData(remittanceType = 'outbound', purposeCode = 'IR001', code = 'USD', value, reverse = true) {
 		let url = '';
 		if (reverse) {
-			url = `${this.baseUrl}/v1/exchanges/remittance/${remittanceType}/reverse?purposeCode=${purposeCode}&currency=${currencyCode}&${this.correspondentId}&value=${value}`;
+			url = `${this.baseUrl}/v1/exchanges/remittance/${remittanceType}/reverse?purposeCode=${purposeCode}&currency=${code}&${this.correspondentId}&value=${value}`;
 		} else {
-			url = `${this.baseUrl}/v1/exchanges/remittance/${remittanceType}/?purposeCode=${purposeCode}&currency=${currencyCode}&${this.correspondentId}&value=${value}`;
+			url = `${this.baseUrl}/v1/exchanges/remittance/${remittanceType}/?purposeCode=${purposeCode}&currency=${code}&${this.correspondentId}&value=${value}`;
 		}
 		if ('fetch' in window) {
 			try {

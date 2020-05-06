@@ -125,7 +125,7 @@
           <!-- Value input-->
           <div class="col s6" id="remittance-value-input">
             <label id="currency-symbol-remittance-brl-value" class="label-symbol">R$</label>
-            <input id="remittance-value" type="number" name="remittanceAmountBRL" step="0.01" min="0" value="1000">
+            <input id="remittance-value" type="number" name="remittanceAmountBRL" step="0.01" min="0" value="1200">
           </div>
         </div>
 
@@ -140,7 +140,7 @@
 
             <p><i class="fas fa-info-circle tooltipped" data-position="top"
               data-tooltip="Tarifa bancária cobrada pela utilização do sistema bancário internacional."></i>
-            Tarifa Bancária = R$ <span id="bankFeelBRL"></span></p>
+            Tarifa Bancária = R$ <span id="bankFee"></span></p>
 
             <p><i class="fas fa-info-circle tooltipped" data-position="top"
               data-tooltip="Significa Imposto sob operações financeiras e essa tarifa é retida pela Receita Federal."></i>

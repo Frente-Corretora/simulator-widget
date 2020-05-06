@@ -4,7 +4,7 @@
 Plugin Name: Simulator Widget
 Plugin URI: https://www.frentecorretora.com.br
 Description: A simple widget for external simulator with paper money and remittance integration from Simple Plataform by Frente Corretora de Câmbio LTDA.
-Version: 1.0.9
+Version: 1.0.2
 Author: Frente Corretora 
 Author URI: https://www.frentecorretora.com.br
 License: The MIT License (MIT) Copyright © 2020 Frente Corretora de Câmbio

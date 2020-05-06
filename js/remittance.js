@@ -1,11 +1,9 @@
-// let _$ = $ || jQuery;
-
 let remittanceRequestTimer;
 
-function delayedGetRemittance(reverse) {
+function delayedGetRemittance(reverse, slide) {
   clearTimeout(remittanceRequestTimer);
   remittanceRequestTimer = setTimeout(() => {
-    getRemittanceData(reverse)
+    getRemittanceData(reverse, slide)
   }, 1)
 }
 
@@ -18,7 +16,7 @@ function delayedGetRemittance(reverse) {
 
 
 // ********* Remittance Simulation *********
-async function getRemittanceData(reverse = true) {
+async function getRemittanceData(reverse = true, slide = false) {
   _$('#remittance-action-btn').attr('disabled', true);
   let purposeCode = window.beneficiary.value;
   let remittanceType = window.remittanceType.value;
@@ -34,7 +32,7 @@ async function getRemittanceData(reverse = true) {
   const currencyCode = window.remittance.value;
 
   _$('label#currency-symbol-remittance-value').html(currencyCode);
-  const value = transformToInteger(remittanceBRLValue, 4);
+  const value = transformToInteger(remittanceBRLValue, 2);
 
   if (remittanceType === '') {
     remittanceType = undefined;
@@ -44,54 +42,60 @@ async function getRemittanceData(reverse = true) {
     purposeCode = undefined;
   }
 
-  const { currency, offer, maxValue, price, tax: { iof }, total, clamp, bankFeeBRL } = await exchange.fetchRemittanceData(remittanceType, purposeCode, currencyCode, value, reverse);
+  const { currency: {code, minValue, maxValue, offer, price, levelingRate}, tax: { iof, bankFee }, total, clamp } = await exchange.fetchRemittanceData(remittanceType, purposeCode, currencyCode, value, reverse);
 
-  const remittanceMaxValue = maxValue;
-  const outboundMinValue = currency.minValueOutbound;
-  const inboundMinValue = currency.minValueInbound;
-  const currencyCodeRemittance = currency.currencyCode;
+  const minValueRemittance = minValue;
+  const maxValueRemittance = maxValue;
+  const currencyCodeRemittance = code;
 
   //-- Validate: Clamp method- min and max values for OUTBOUND and INBOUND.
 
   // Outbound: 
   if (remittanceType === 'outbound' && clamp === "MINIMUM") {
-    _$('input#remittance-value').val(outboundMinValue);
+    _$('input#remittance-value').val(minValue);
     // alert("O valor mínimo de envio é de _$_$_$");
-    M.toast({ html: 'O valor mínimo de envio é de ' + currencyCodeRemittance + ' ' + outboundMinValue });
+    M.toast({ html: 'O valor mínimo de envio é de ' + currencyCodeRemittance + ' ' + minValueRemittance });
   } else if (remittanceType === 'outbound' && clamp === "MAXIMUM") {
-    _$('input#remittance-value').val(remittanceMaxValue);
-    M.toast({ html: 'O valor máximo de envio é de ' + currencyCodeRemittance + ' ' + remittanceMaxValue });
+    _$('input#remittance-value').val(maxValue);
+    M.toast({ html: 'O valor máximo de envio é de ' + currencyCodeRemittance + ' ' + maxValueRemittance });
   }
 
   // Inbound
   if (remittanceType === 'inbound' && clamp === "MINIMUM") {
-    _$('input#remittance-value').val(outboundMinValue);
-    M.toast({ html: 'O valor mínimo de recebimento é de ' + currencyCodeRemittance + ' ' + inboundMinValue });
+    _$('input#remittance-value').val(minValue);
+    M.toast({ html: 'O valor mínimo de recebimento é de ' + currencyCodeRemittance + ' ' + minValueRemittance });
   } else if (remittanceType === 'inbound' && clamp === "MAXIMUM") {
-    _$('input#remittance-value').val(remittanceMaxValue);
-    M.toast({ html: 'O valor máximo de recebimento é de ' + currencyCodeRemittance + ' ' + remittanceMaxValue });
+    _$('input#remittance-value').val(maxValue);
+    M.toast({ html: 'O valor máximo de recebimento é de ' + currencyCodeRemittance + ' ' + maxValueRemittance });
   }
 
 
-  if (reverse) {
-    simulateRemittance(offer, iof, reverse);
+  if (slide) {
+    // moeda estrangeira
+    simulateRemittance(offer, iof, true);
+    // real
+    simulateRemittance(total.withTax, iof, false);
+    // codigo bom
   } else {
-    simulateRemittance(total.withTax, iof, reverse);
+    if (reverse) {
+      simulateRemittance(offer, iof, reverse);
+    } else {
+      simulateRemittance(total.withTax, iof, reverse);
+    }
   }
+
 
   // Fee infos for remittance 
   if (window.remittanceType.value === 'outbound') {
-    populateQuotation(price.rawValueOutbound.value / price.rawValueOutbound.divisor);
+    populateQuotation(levelingRate.value / levelingRate.divisor);
   } else {
-    populateQuotation(price.rawValueInbound.value / price.rawValueInbound.divisor);
+    populateQuotation(levelingRate.value / levelingRate.divisor);
   }
 
   populateVet(price.withTax.value / price.withTax.divisor);
-  if (typeof bankFeeBRL === 'undefined') {
-    _$('span#bankFeelBRL').html('0,00');
-  } else {
-    populateBankFeelBRL(bankFeeBRL.value / bankFeeBRL.divisor);
-  }
+
+  populateBankFeelBRL(bankFee.total.value / bankFee.total.divisor);
+  
 
 }
 
@@ -103,8 +107,9 @@ function populateVet(vet) {
   _$('span#priceWithTax').html(vet);
 }
 
-function populateBankFeelBRL(bankFeeBRL) {
-  _$('span#bankFeelBRL').html(bankFeeBRL);
+function populateBankFeelBRL(bankFee) {
+  _$('span#bankFee').html(bankFee);
+  console.log(bankFee);
 }
 
 
@@ -167,24 +172,24 @@ function getBeneficiaries() {
 // Populate currencies for Outbound type (USD, EUR)
 function getOutboundCurrencies () {
   const remittanceCurrenciesOutbound = [
-    { currencyName: 'Dólar Americano', currency: 'USD', image: "https://s3.amazonaws.com/frente-exchanges/flags/united-states.svg" },
-    { currencyName: 'Euro', currency: 'EUR', image: "https://s3.amazonaws.com/frente-exchanges/flags/european-union.svg" }
+    { name: 'Dólar Americano', code: 'USD', image: "https://s3.amazonaws.com/frente-exchanges/flags/united-states.svg" },
+    { name: 'Euro', code: 'EUR', image: "https://s3.amazonaws.com/frente-exchanges/flags/european-union.svg" }
   ];
 
   (_$('#remittance-currencies').children().remove());
 
   for (const currency of remittanceCurrenciesOutbound) {
     const remittanceCurrenciesOutbound = _$(
-      `<li class="mdc-list-item" data-value=${currency.currency} data-text=${currency.currencyName.replace(/ /g, '')} data-icon=${currency.image}>
+      `<li class="mdc-list-item" data-value=${currency.code} data-text=${currency.name.replace(/ /g, '')} data-icon=${currency.image}>
       </li>`
     )
-      .html(` <img width="22px" src=${currency.image}></img> &nbsp; ${currency.currencyName}`);
+      .html(` <img width="22px" src=${currency.image}></img> &nbsp; ${currency.name}`);
 
     _$('#remittance-currencies').append(remittanceCurrenciesOutbound);
   }
 
-  delayedGetRemittance();
   window.remittance.selectedIndex = '0';
+  delayedGetRemittance();
 }
 
 // Populate currencies for Inboud type (USD, EUR, GBP)
@@ -192,19 +197,19 @@ function getInboundCurrencies() {
 
   
   const remittanceCurrenciesInbound = [
-    { currencyName: 'Dólar Americano', currency: 'USD', image: "https://s3.amazonaws.com/frente-exchanges/flags/united-states.svg" },
-    { currencyName: 'Euro', currency: 'EUR', image: "https://s3.amazonaws.com/frente-exchanges/flags/european-union.svg" },
-    { currencyName: 'Libra Esterlina', currency: 'GBP', image: "https://s3.amazonaws.com/frente-exchanges/flags/united-kingdom.svg"}
+    { name: 'Dólar Americano', code: 'USD', image: "https://s3.amazonaws.com/frente-exchanges/flags/united-states.svg" },
+    { name: 'Euro', code: 'EUR', image: "https://s3.amazonaws.com/frente-exchanges/flags/european-union.svg" },
+    { name: 'Libra Esterlina', code: 'GBP', image: "https://s3.amazonaws.com/frente-exchanges/flags/united-kingdom.svg"}
   ];
 
   (_$('#remittance-currencies').children().remove());
 
   for (const currency of remittanceCurrenciesInbound) {
       const remittanceCurrenciesInbound = _$(
-      `<li class="mdc-list-item" data-value=${currency.currency} data-text=${currency.currencyName.replace(/ /g, '')} data-icon=${currency.image}>
+      `<li class="mdc-list-item" data-value=${currency.code} data-text=${currency.name.replace(/ /g, '')} data-icon=${currency.image}>
       </li>`
     )
-      .html(` <img width="22px" src=${currency.image}></img> &nbsp; ${currency.currencyName}`);
+      .html(` <img width="22px" src=${currency.image}></img> &nbsp; ${currency.name}`);
 
     _$('#remittance-currencies').append(remittanceCurrenciesInbound);
 
