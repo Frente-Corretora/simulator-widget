@@ -42,21 +42,23 @@ async function getRemittanceData(reverse = true, slide = false) {
     purposeCode = undefined;
   }
 
-  const { currency: {code, minValue, maxValue, offer, price, levelingRate}, tax: { iof, bankFee }, total, clamp } = await exchange.fetchRemittanceData(remittanceType, purposeCode, currencyCode, value, reverse);
+  const { currency: {code, minValue, maxValue, offer, price, levelingRate}, tax: { iof, bankFee }, total: {withTax}, clamp } = await exchange.fetchRemittanceData(remittanceType, purposeCode, currencyCode, value, reverse);
 
   const minValueRemittance = minValue;
   const maxValueRemittance = maxValue;
   const currencyCodeRemittance = code;
+  const brlValue = withTax.value / withTax.divisor;
+
 
   //-- Validate: Clamp method- min and max values for OUTBOUND and INBOUND.
 
   // Outbound: 
   if (remittanceType === 'outbound' && clamp === "MINIMUM") {
-    _$('input#remittance-value').val(minValue);
-    // alert("O valor mínimo de envio é de _$_$_$");
+// 	const valueBrl = withTax.value / withTax.divisor;
+    _$('input#remittance-value').val(brlValue);
     M.toast({ html: 'O valor mínimo de envio é de ' + currencyCodeRemittance + ' ' + minValueRemittance });
   } else if (remittanceType === 'outbound' && clamp === "MAXIMUM") {
-    _$('input#remittance-value').val(maxValue);
+    _$('input#remittance-value').val(brlValue);
     M.toast({ html: 'O valor máximo de envio é de ' + currencyCodeRemittance + ' ' + maxValueRemittance });
   }
 
@@ -74,13 +76,13 @@ async function getRemittanceData(reverse = true, slide = false) {
     // moeda estrangeira
     simulateRemittance(offer, iof, true);
     // real
-    simulateRemittance(total.withTax, iof, false);
+    simulateRemittance(withTax, iof, false);
     // codigo bom
   } else {
     if (reverse) {
       simulateRemittance(offer, iof, reverse);
     } else {
-      simulateRemittance(total.withTax, iof, reverse);
+      simulateRemittance(withTax, iof, reverse);
     }
   }
 
@@ -109,7 +111,6 @@ function populateVet(vet) {
 
 function populateBankFeelBRL(bankFee) {
   _$('span#bankFee').html(bankFee);
-  console.log(bankFee);
 }
 
 
@@ -183,7 +184,7 @@ function getOutboundCurrencies () {
       `<li class="mdc-list-item" data-value=${currency.code} data-text=${currency.name.replace(/ /g, '')} data-icon=${currency.image}>
       </li>`
     )
-      .html(` <img width="22px" src=${currency.image}></img> &nbsp; ${currency.name}`);
+      .html(` <img width="22px" alt="Ilustração da bandeira dos Estados Unidos, indicando a moeda Dólar Americano" src=${currency.image}></img> &nbsp; ${currency.name}`);
 
     _$('#remittance-currencies').append(remittanceCurrenciesOutbound);
   }
