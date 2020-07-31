@@ -107,4 +107,4 @@ Exemplos:
 
 O arquivo principal de CSS se encontra no diretório **css/main.css**, e também há uma folha de estilos em **materialize/css/materialize.css**
 
-Dúvidas e sugestões? Me manda uma mensagem: [danielle.fernandes@frentecorretora.com.br](mailto:danielle.fernandes@frentecorretora.com.br)
+Dúvidas e sugestões? Manda uma mensagem para o nosso setor de relacionamento com o Correspondente: [helton.souza@frentecorretora.com.br](mailto:helton.souza@frentecorretora.com.br)
