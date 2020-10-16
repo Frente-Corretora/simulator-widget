@@ -2,7 +2,6 @@ class Exchange {
 
 	constructor () {
 		this.baseUrl = 'https://api.frentecorretora.com.br'; // API url
-		this.correspondentId = 'correspondentId=1'; // Correspondent ID
 		this._exchangeData = null;
 		this._remittanceData = null;
 	}
@@ -75,9 +74,9 @@ class Exchange {
 	async fetchRemittanceData(remittanceType = 'outbound', purposeCode = 'IR001', code = 'USD', value, reverse = true) {
 		let url = '';
 		if (reverse) {
-			url = `${this.baseUrl}/v1/exchanges/remittance/${remittanceType}/reverse?purposeCode=${purposeCode}&currency=${code}&${this.correspondentId}&value=${value}`;
+			url = `${this.baseUrl}/v1/exchanges/remittance/${remittanceType}/reverse?purposeCode=${purposeCode}&currency=${code}&correspondentId=${correspondent_id}&value=${value}`;
 		} else {
-			url = `${this.baseUrl}/v1/exchanges/remittance/${remittanceType}/?purposeCode=${purposeCode}&currency=${code}&${this.correspondentId}&value=${value}`;
+			url = `${this.baseUrl}/v1/exchanges/remittance/${remittanceType}/?purposeCode=${purposeCode}&currency=${code}&correspondentId=${correspondent_id}&value=${value}`;
 		}
 		if ('fetch' in window) {
 			try {

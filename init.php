@@ -40,6 +40,7 @@ function load_scripts() {
     wp_enqueue_script( 'materializeMinJs', plugin_dir_url( __FILE__ ) . 'materialize/js/materialize.min.js', array('jquery'), '1.0.9', true );
 
     // Simulator
+    wp_enqueue_script( 'config', plugin_dir_url( __FILE__ ) . 'js/config.js', array( 'jquery' ), '1.0.9', true  );
     wp_enqueue_script( 'index', plugin_dir_url( __FILE__ ) . 'js/index.js', array( 'jquery' ), '1.0.9', true  );
     wp_enqueue_script( 'request', plugin_dir_url( __FILE__ ) . 'js/request.js', array( 'jquery' ), '1.0.9', true );
     wp_enqueue_script( 'agent', plugin_dir_url( __FILE__ ) . 'js/agent.js', array( 'jquery' ), '1.0.9', true  );
