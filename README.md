@@ -22,17 +22,15 @@ O Widget foi desenvolvido utilizando PHP, HTML5, CSS3 e JavaScript, sendo:
 2. Abra seu editor de códigos preferido, pois vamos codar! \o
 
 ### Primeiros passos
-Este projeto ainda necessita de um pouco de mão na massa para a sua utilização, pois é necessário definir por exemplo o seu ID de correspondente em alguns arquivos. 
+Este projeto ainda necessita de um pouco de mão na massa para a sua utilização, pois é necessário definir ID de correspondente e identificador no arquivo de configuração. 
 
-Cada parceiro Simple possui um ID único requisitado na API, sendo um tipo *string* e um tipo *integer*. Esse ID pode ser solicitado com a nossa equipe técnica, caso você não saiba o seu.
+Cada parceiro Simple possui um ID único do tipo *integer* e um identificador do tipo *string* requisitados na API. Esses dados podem ser solicitados com a nossa equipe técnica, caso você não saiba o seu.
 
 **correspondent_identifier** *(String)* é um nome, um identificador único para cada correspondente associado ao SIMPLE.
 > Exemplo: 'frente'
 
 **correspondentId** *(Integer)* é o ID associado ao correspondente.
 > Exemplo: 1
-
-Vamos iniciar alterando o nosso nome de parceiro:
 
 3. Abra o arquivo **js/config.js** e altere os valores das variaveis **correspondent_id** e **correspondent_identifier** nas linhas 1 e 3, respectivamente, para seus valores correspondentes:
 ```javascript
