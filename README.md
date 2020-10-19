@@ -22,73 +22,22 @@ O Widget foi desenvolvido utilizando PHP, HTML5, CSS3 e JavaScript, sendo:
 2. Abra seu editor de códigos preferido, pois vamos codar! \o
 
 ### Primeiros passos
-Este projeto ainda necessita de um pouco de mão na massa para a sua utilização, pois é necessário definir por exemplo o seu ID de correspondente em alguns arquivos. 
+Este projeto ainda necessita de um pouco de mão na massa para a sua utilização, pois é necessário definir ID de correspondente e identificador no arquivo de configuração. 
 
-Cada parceiro Simple possui um ID único requisitado na API, sendo um tipo *string* e um tipo *integer*. Esse ID pode ser solicitado com a nossa equipe técnica, caso você não saiba o seu.
+Cada parceiro Simple possui um ID único do tipo *integer* e um identificador do tipo *string* requisitados na API. Esses dados podem ser solicitados com a nossa equipe técnica, caso você não saiba o seu.
 
 **correspondent_identifier** *(String)* é um nome, um identificador único para cada correspondente associado ao SIMPLE.
-> Exemplo: matriz
+> Exemplo: 'frente'
 
 **correspondentId** *(Integer)* é o ID associado ao correspondente.
 > Exemplo: 1
 
-Vamos iniciar alterando o nosso nome de parceiro:
-
-3. Abra o arquivo **js/agent.js** e procure na linha 4 da classe **Agent**, no método construtor, pela variável **correspId**:
+3. Abra o arquivo **js/config.js** e altere os valores das variaveis **correspondent_id** e **correspondent_identifier** nas linhas 1 e 3, respectivamente, para seus valores correspondentes:
 ```javascript
-class Agent {
-  constructor() {
-  this.baseUrl = `https://api.frentecorretora.com.br`; // URL de requisição da API
-  this.correspondent_identifier = 'matriz'; // Nome do seu correspondent ID
-  this._agentData = null;
-  }
-}
+const correspondent_id = 1;
+
+const correspondent_identifier = 'frente';
 ```
-Note que passamos para essa variável uma *string*, cuja qual é o seu nome de parceiro que irá aparecer na URL de redirecionamento.
-
-4. Altere somente o nome, inserindo o seu ID Simple, e salve o arquivo.
-> Exemplo:  this.correspondent_identifier = 'frente';
-
-Agora vamos alterar o correspondentId *integer*.
-
-5. Abra o arquivo **js/request.js** e procure na linha 4 da classe **Exhange**, no método construtor, pela variável **correspondentId**:
-```javascript
-class Exchange {
-  constructor() {
-    this.baseUrl = 'https://api.frentecorretora.com.br'; // URL de requisição da API
-    this.correspondentId = 'correspondentId=1'; // Número do seu correspondente ID
-    this._exchangeData = null;
-    this._remittanceData = null;
-  }
-}
-```
-
-Passamos para essa variável uma *string* que dentro inclui nosso número de **correspondentId**.
-
-6. Altere somente o número, inserindo o seu ID Simple, e salve o arquivo.
-> Exemplo: this.correspondentId = 'correspondentId=1'; 
-
-Por último vamos realizar uma alteração no arquivo de submissão, localizado em **js/submit.js**.<br>
-Ao clicar no botão **"SIMULE AGORA"**, duas rotas são geradas. De acordo com cada tipo de operação há uma rota, sendo uma para Papel Moeda e outra para Remessa. Com essa rota conseguimos passar para o Simple os valores que o usuário inseriu no simulador e mantê-los do outro lado.
-
-7. Nas linhas **15** e **28** do arquivo, na variável *const url*, iremos alterar na URL o mesmo **correspondent_identifier** que inserimos no passo 4.
-```javascript
-/**
-* Paper Money simulator submit
-*/
-$("#exchange").on('submit', e => {
-const url = `https://iamsimple.com.br/frente/app/checkout/paper-money?${query}&agentId=${merchantId}&productId=${currencyCode}`;
-});
-
-/** 
-* Remittance simulator submit
-*/
-$("#remittance").on('submit', e => {
-const url = `https://iamsimple.com.br/frente/app/checkout/remittance?remittance=true&${query}&purposeCode=${purposeCode}&currencyCode=${currencyCode}&remittanceType=${remittanceType}`;
-});
-```
-Após a url https://iamsimple.com.br é onde se deve realizar a alteração, incluindo o seu **correspondent_identifier**
-> Exemplo: https://iamsimple.com.br/seuidentificador
 
 Com isso você já terá seu simulador externo funcionando corretamente e integrado com o seu próprio Simple! Basta inserir o widget no seu site onde preferir.
 

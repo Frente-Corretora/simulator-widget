@@ -42,7 +42,24 @@ async function getRemittanceData(reverse = true, slide = false) {
     purposeCode = undefined;
   }
 
-  const { currency: {code, minValue, maxValue, offer, price, levelingRate}, tax: { iof, bankFee }, total: {withTax}, clamp } = await exchange.fetchRemittanceData(remittanceType, purposeCode, currencyCode, value, reverse);
+  const {
+    currency: {
+      code,
+      minValue,
+      maxValue,
+      offer,
+      price,
+      levelingRate
+    },
+    tax: {
+      iof,
+      bankFee
+    },
+    total: {
+      withTax
+    },
+    clamp
+  } = await exchange.fetchRemittanceData(remittanceType, purposeCode, currencyCode, value, reverse);
 
   const minValueRemittance = minValue;
   const maxValueRemittance = maxValue;
@@ -137,46 +154,44 @@ function simulateRemittance(offer, iof, reverse) {
 
 
 // Populate beneficiares and remittance types on select
-function getBeneficiaries() {
-
-  const remittanceOptions = [
-    { label: 'Eu mesmo', value: 'IR001' },
-    { label: 'Outra pessoa', value: 'IR002' }
-  ];
-
-  const remittanceType = [
-    { label: 'Envio', value: 'outbound' },
-    { label: 'Recebimento', value: 'inbound' }
-
-  ];
-
-  for (const option of remittanceOptions) {
+function getBeneficiaries() {  
+  for (const option of remittanceData.outbound.options) {
     const result = _$(`<li class="mdc-list-item" data-value=${option.value} data-text=${option.label}></li>`)
       .html(option.label);
 
     _$('#remittance-beneficiary').append(result);
   }
 
-  for (const option of remittanceType) {
-    const result = _$(`<li class="mdc-list-item" data-value=${option.value} data-text=${option.label}></li>`)
-      .html(option.label);
+  const outboundType = _$(`<li class="mdc-list-item" data-value=${remittanceData.outbound.value} data-text=${remittanceData.outbound.label}></li>`)
+    .html(remittanceData.outbound.label);
+  _$('#remittance-type').append(outboundType);
 
-    _$('#remittance-type').append(result);
-  }
+  const inboundType = _$(`<li class="mdc-list-item" data-value=${remittanceData.inbound.value} data-text=${remittanceData.inbound.label}></li>`)
+    .html(remittanceData.inbound.label);
+  _$('#remittance-type').append(inboundType);
 
-  window.beneficiary.selectedIndex = '1';
+  window.beneficiary.selectedIndex = '0';
   window.remittanceType.selectedIndex = '0';
+
 
   delayedGetRemittance();
 }
 
+function setBeneficiaries(type) {
+  document.querySelector('#remittance-beneficiary').innerHTML = "";
+
+  for (const option of remittanceData[type].options) {
+    const result = _$(`<li class="mdc-list-item" data-value=${option.value} data-text=${option.label}></li>`)
+      .html(option.label);
+
+    _$('#remittance-beneficiary').append(result);
+  }
+
+  window.beneficiary.selectedIndex = '0';
+}
+
 // Populate currencies for Outbound type (USD, EUR)
 function getOutboundCurrencies () {
-  const remittanceCurrenciesOutbound = [
-    { name: 'Dólar Americano', code: 'USD', image: "https://s3.amazonaws.com/frente-exchanges/flags/united-states.svg" },
-    { name: 'Euro', code: 'EUR', image: "https://s3.amazonaws.com/frente-exchanges/flags/european-union.svg" }
-  ];
-
   (_$('#remittance-currencies').children().remove());
 
   for (const currency of remittanceCurrenciesOutbound) {
@@ -195,14 +210,6 @@ function getOutboundCurrencies () {
 
 // Populate currencies for Inboud type (USD, EUR, GBP)
 function getInboundCurrencies() {
-
-  
-  const remittanceCurrenciesInbound = [
-    { name: 'Dólar Americano', code: 'USD', image: "https://s3.amazonaws.com/frente-exchanges/flags/united-states.svg" },
-    { name: 'Euro', code: 'EUR', image: "https://s3.amazonaws.com/frente-exchanges/flags/european-union.svg" },
-    { name: 'Libra Esterlina', code: 'GBP', image: "https://s3.amazonaws.com/frente-exchanges/flags/united-kingdom.svg"}
-  ];
-
   (_$('#remittance-currencies').children().remove());
 
   for (const currency of remittanceCurrenciesInbound) {

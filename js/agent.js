@@ -3,14 +3,13 @@
 class Agent {
 	constructor() {
 		this.baseUrl = `https://api.frentecorretora.com.br`; // API url
-		this.correspondent_identifier = 'frente'; // Correspondent id name
 		this._agentData = null;
 	}
 
 	// ********* Fetch agents *********
 
 	async fetchData() {
-		let url = `${this.baseUrl}/v1/correspondents/${this.correspondent_identifier}/agents?orderByLocation=true`;
+		let url = `${this.baseUrl}/v1/correspondents/${correspondent_identifier}/agents?orderByLocation=true`;
 
 		if ('fetch' in window) {
 			try {

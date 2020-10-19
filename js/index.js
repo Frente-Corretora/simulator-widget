@@ -103,11 +103,13 @@ let _$ = jQuery;
         $('#outbound-down').addClass("outbound-down");
         $('#inbound-up').addClass("inbound-up");
         getInboundCurrencies(); // Get USD, EUR , GBP.
+        setBeneficiaries('inbound');
         delayedGetRemittance(true, true);
       } else {
         $('#outbound-down').removeClass("outbound-down").addClass("transition-up");
         $('#inbound-up').removeClass("inbound-up").addClass("transition-up");
         getOutboundCurrencies(); // Get USD, EUR.
+        setBeneficiaries('outbound');
         delayedGetRemittance(false, true);
       }
     });
