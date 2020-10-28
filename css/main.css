@@ -1,77 +1,68 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-/* Typography */
-#simulator-container {
-  font-family: 'Raleway', sans-serif;
-  color: #898989;
-}
+  /* Typography */
+  body {
+    font-family: 'Raleway', sans-serif;        
+    color: #898989;
+  }
 
-#simulator-container p {
-  font-size: 12px !important;
-}
+  p {
+    font-size: 12px !important;
+  }
 
-#simulator-container p.beneficiary {
-  color: #0c4873;
-  /* Cor do texto do label que fica acima de cada select. Exemplo: "Tipo de remessa" */
-  font-weight: 700;
-  font-size: 15px;
-}
+  p.beneficiary  {
+    color: #0c4873; /* Cor do texto do label que fica acima de cada select. Exemplo: "Tipo de remessa" */
+    font-weight: 700;
+	font-size: 15px;
+  }
 
-/* Global label */
-#simulator-container .global-label {
-  background-color: #0c4873;
-  /* Cor de fundo do label global, que exibe o ícone da moeda BRL escrito "Real" */
-  color: #ffffff;
-  /* Cor do texto do label global */
-  font-weight: 500;
-  font-size: 15px;
-  text-align: center;
-  border-radius: 5px;
-  width: 100%;
-  height: 100%
-}
+  /* Global label */
+  .global-label {
+    background-color: #0c4873; /* Cor de fundo do label global, que exibe o ícone da moeda BRL escrito "Real" */
+    color: #ffffff; /* Cor do texto do label global */
+    font-weight: 500;
+    font-size: 15px;
+    text-align: center;
+    border-radius: 5px;
+    width: 100%;
+    height: 100%
+  }
 
-#simulator-container .mdc-tab__text-label {
-  font-size: 15px !important;
-}
+  /* Label for currencies Symbol */
+  .label-symbol {
+    font-size: 15px; 
+    font-weight: 600;
+	color: #8a8888;
+    /* Exibe o código de cada moeda ao lado do valor. Exemplo: USD, EUR, BRL */
+  }
 
-/* Label for currencies Symbol */
-#simulator-container .label-symbol {
-  font-size: 15px;
-  font-weight: 600;
-  color: #8a8888;
-  /* Exibe o código de cada moeda ao lado do valor. Exemplo: USD, EUR, BRL */
-}
+  /*  Flag icon BRL */
+  .br-flag {
+    width: 25px;
+    height: 25px;
+    float: left;
+    /* Define o tamanho do ícone da moeda BRL */
+  }
 
-/*  Flag icon BRL */
-#simulator-container .br-flag {
-  width: 25px;
-  height: 25px;
-  float: left;
-  /* Define o tamanho do ícone da moeda BRL */
-}
+  #brl {
+    padding: 8px 8px; /* Define o posicionamento do texto "Real" */
+  }
 
-#brl {
-  padding: 8px 8px;
-  /* Define o posicionamento do texto "Real" */
-}
+  #brl-coin {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 2px 2px;
+    padding-left: 12px;
+    height: 56px;
+    /* Define o posicionamento do ícone */
+  }
 
-#brl-coin {
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  padding: 2px 2px;
-  padding-left: 12px;
-  height: 56px;
-  /* Define o posicionamento do ícone */
-}
-
-/* Icons Font Awesome */
-#simulator-container i.fas,
-#simulator-container i.far,
-#simulator-container i.fab {
-  color: #0098a4;
-  /* Define a cor dos ícones que exibe as informações de taxas. Exemplo: VET, COTAÇÃO... */
+  /* Icons Font Awesome */
+  i.fas,
+  i.far,
+  i.fab {
+  color: #0098a4; /* Define a cor dos ícones que exibe as informações de taxas. Exemplo: VET, COTAÇÃO... */
 }
 
 /*
@@ -79,22 +70,19 @@
 *
 
 /* Material: Select component  */
-#simulator-container .mdc-select:not(.mdc-select--disabled) .mdc-select__anchor {
-  background-color: transparent !important;
-  /* Selects transparentes: Tipo de remessa, beneficiário, cidade */
+.mdc-select:not(.mdc-select--disabled) .mdc-select__anchor {
+  background-color: transparent !important;  /* Selects transparentes: Tipo de remessa, beneficiário, cidade */
 }
 
-#simulator-container .mdc-select {
+.mdc-select {
   position: relative;
   display: flex !important;
 }
-
-#simulator-container .mdc-select__selected-text {
+.mdc-select__selected-text {
   min-width: 100% !important;
   font-family: 'Raleway', sans-serif !important;
   font-weight: 500 !important;
-  background-color: #0c4873 !important;
-  /* Cor de fundo dos selects coloridos (Moedas) */
+  background-color: #0c4873 !important;   /* Cor de fundo dos selects coloridos (Moedas) */
   border-radius: 5px;
   font-size: 15px !important;
   display: inline-block;
@@ -136,8 +124,7 @@
 }
 
 .mdc-select:not(.mdc-select--disabled) .mdc-select__selected-text {
-  color: white !important;
-  /* Cor do texto selecionado nos selects coloridos (Moedas) */
+  color: white !important; /* Cor do texto selecionado nos selects coloridos (Moedas) */
 }
 
 .mdc-list-item {
@@ -145,27 +132,23 @@
 }
 
 .mdc-menu .mdc-list {
-  color: white !important;
-  /* Cor do texto da lista nos selects coloridos (Moedas) */
-  font-size: 15px !important;
+  color: white !important;  /* Cor do texto da lista nos selects coloridos (Moedas) */
+  font-size: 15px !important; 
   font-family: 'Raleway', sans-serif;
   font-weight: 500 !important;
 }
 
 .mdc-menu-surface {
-  background-color: #0c4873 !important;
-  /* Cor do plano de fundo das listas nos selects coloridos (Moedas) */
+  background-color: #0c4873 !important; /* Cor do plano de fundo das listas nos selects coloridos (Moedas) */
 }
 
 .mdc-select__menu .mdc-list .mdc-list-item--selected {
-  color: white !important;
-  /* Cor do texto selecionado nos selects coloridos (Moedas) */
+  color: white !important;  /* Cor do texto selecionado nos selects coloridos (Moedas) */
 }
 
 .mdc-select:not(.mdc-select--disabled):hover .mdc-line-ripple::before {
   border-bottom-color: transparent !important;
 }
-
 .mdc-select:not(.mdc-select--disabled) .mdc-line-ripple::before {
   border-bottom-color: transparent !important;
 }
@@ -183,16 +166,12 @@
 #caret-transparent {
   background-image: url('data:image/svg+xml,<svg%20width%3D"10px"%20height%3D"5px"%20viewBox%3D"7%2010%2010%205"%20version%3D"1.1"%20xmlns%3D"http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg"%20xmlns%3Axlink%3D"http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink">%0A%20%20%20%20<polygon%20id%3D"Shape"%20stroke%3D"none"%20fill%3D"%23585858"%20fill-rule%3D"evenodd"%20opacity%3D"1"%20points%3D"7%2010%2012%2015%2017%2010"><%2Fpolygon>%0A<%2Fsvg>') !important;
   right: -6px !important;
-}
-
-/* Ícone dropdown CINZA para select transparente */
+} /* Ícone dropdown CINZA para select transparente */
 
 .mdc-select__dropdown-icon {
   background-image: url('data:image/svg+xml,<svg%20width%3D"10px"%20height%3D"5px"%20viewBox%3D"7%2010%2010%205"%20version%3D"1.1"%20xmlns%3D"http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg"%20xmlns%3Axlink%3D"http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink">%0A%20%20%20%20<polygon%20id%3D"Shape"%20stroke%3D"none"%20fill%3D"%23ffffff"%20fill-rule%3D"evenodd"%20opacity%3D"1"%20points%3D"7%2010%2012%2015%2017%2010"><%2Fpolygon>%0A<%2Fsvg>') !important;
   right: 6px !important;
-}
-
-/* Ícone dropdown BRANCO para select colorido */
+}  /* Ícone dropdown BRANCO para select colorido */
 
 .mdc-ripple-upgraded {
   width: 100%;
@@ -200,26 +179,21 @@
 
 /*  Remittance beneficiary */
 #beneficiary-ul .mdc-select__selected-text {
-  background-color: transparent !important;
-  /* Cor de fundo nos selects transparentes (Beneficiário) */
-  color: #585858 !important;
-  /* Cor do texto selecionado nos selects transparentes (Beneficiário) */
+  background-color: transparent !important; /* Cor de fundo nos selects transparentes (Beneficiário) */
+  color: #585858 !important; /* Cor do texto selecionado nos selects transparentes (Beneficiário) */
   border-bottom: 1px solid #ccc;
 }
 
 #beneficiary-ul .mdc-menu .mdc-list {
-  color: #585858 !important;
-  /* Cor do texto da lista nos selects transparentes (Beneficiário) */
+  color: #585858 !important; /* Cor do texto da lista nos selects transparentes (Beneficiário) */
   font-size: 15px !important;
-  font-weight: 500 !important;
+  font-weight: 500 !important;  
   font-family: 'Raleway', sans-serif;
-  background-color: #f0f0f0;
-  /* Cor de fundo da lista nos selects transparentes (Beneficiário) */
+  background-color: #f0f0f0; /* Cor de fundo da lista nos selects transparentes (Beneficiário) */
 }
 
 #beneficiary-ul .mdc-select__menu .mdc-list .mdc-list-item--selected {
-  color: #585858 !important;
-  /* Cor do texto selecionado na lista dos selects transparentes (Beneficiário) */
+  color: #585858 !important; /* Cor do texto selecionado na lista dos selects transparentes (Beneficiário) */
 }
 
 .mdc-select__menu {
@@ -228,64 +202,53 @@
 
 /* Merchant Select */
 #merchant-ul .mdc-select__selected-text {
-  background-color: transparent !important;
-  /* Cor de fundo nos selects transparentes (Cidade) */
-  color: #585858 !important;
-  /* Cor do texto selecionado nos selects transparentes (Cidade) */
+  background-color: transparent !important; /* Cor de fundo nos selects transparentes (Cidade) */
+  color: #585858 !important; /* Cor do texto selecionado nos selects transparentes (Cidade) */
   border-bottom: 1px solid #ccc;
 }
 
 #merchant-ul .mdc-menu .mdc-list {
-  color: #585858 !important;
-  /* Cor do texto na lista nos selects transparentes (Cidade) */
+  color: #585858 !important; /* Cor do texto na lista nos selects transparentes (Cidade) */
   font-size: 15px !important;
   font-family: 'Raleway', sans-serif;
-  background-color: #f0f0f0;
-  /* Cor de fundo da lista nos selects transparentes (Cidade) */
+  background-color: #f0f0f0; /* Cor de fundo da lista nos selects transparentes (Cidade) */
 }
 
 #merchant-ul .mdc-select__menu .mdc-list .mdc-list-item--selected {
-  color: #585858 !important;
-  /* Cor do texto selecionado na lista nos selects transparentes (Cidade) */
+  color: #585858 !important; /* Cor do texto selecionado na lista nos selects transparentes (Cidade) */
 }
 
 /* Remittance Type */
 #remittance-type-ul .mdc-select__selected-text {
-  background-color: transparent !important;
-  /* Cor de fundo nos selects transparentes (Tipo de remessa) */
-  color: #585858 !important;
-  /* Cor do texto selecionado nos selects transparentes (Tipo de remessa) */
+  background-color: transparent !important; /* Cor de fundo nos selects transparentes (Tipo de remessa) */
+  color: #585858 !important; /* Cor do texto selecionado nos selects transparentes (Tipo de remessa) */
   border-bottom: 1px solid #ccc;
 }
 
 #remittance-type-ul .mdc-menu .mdc-list {
-  color: #585858 !important;
-  /* Cor do texto na lista nos selects transparentes (Tipo de remessa) */
+  color: #585858 !important; /* Cor do texto na lista nos selects transparentes (Tipo de remessa) */
   font-size: 15px !important;
   font-family: 'Raleway', sans-serif;
-  background-color: #f0f0f0;
-  /* Cor de fundo da lista nos selects transparentes (Tipo de remessa) */
+  background-color: #f0f0f0; /* Cor de fundo da lista nos selects transparentes (Tipo de remessa) */
 }
 
 #remittance-type-ul .mdc-select__menu .mdc-list .mdc-list-item--selected {
-  color: #585858 !important;
-  /* Cor do texto selecionado na lista nos selects transparentes (Tipo de remessa) */
+  color: #585858 !important; /* Cor do texto selecionado na lista nos selects transparentes (Tipo de remessa) */
 }
 
 /* Remove all styles from material pattern */
 .mdc-line-ripple--active {
-  background-color: transparent !important;
+background-color: transparent !important;
 }
 
 .mdc-select:not(.mdc-select--disabled) .mdc-select__selected-text {
-  border-bottom-color: transparent !important;
+border-bottom-color: transparent !important;
 }
 
 .mdc-select:not(.mdc-select--disabled):hover .mdc-line-ripple::before {
   border: none;
   border-bottom-color: transparent !important;
 }
-
 .mdc-select:not(.mdc-select--disabled) .mdc-line-ripple::before {
   border-bottom-color: transparent !important;
 }
@@ -303,67 +266,61 @@
 
 /* TABS */
 .content {
-  display: none;
+	display: none;
 }
 
 .content--active {
-  display: block;
+	display: block;
 }
 
 .mdc-tab {
-  font-family: 'Raleway', sans-serif !important;
-  height: 52px !important;
-  background-color: #dfdfdf !important;
-  /* Cor do plano de fundo da tab inativa */
-  border-top-left-radius: 7px;
-  border-top-right-radius: 7px;
-  flex: 0 0 auto !important;
+	font-family: 'Raleway', sans-serif !important;
+	height: 52px !important;
+	background-color: #dfdfdf !important; /* Cor do plano de fundo da tab inativa */
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+	flex: 0 0 auto !important;
 }
 
 .mdc-tab:nth-last-child(odd) {
-  margin-left: 13px;
+	margin-left: 13px;
 }
 
 .mdc-tab:hover {
-  color: #ffffff !important;
+	color: #ffffff !important;
 }
 
 .mdc-tab:hover {
-  background-color: #0c4873 !important;
-  /* Cor do plano de fundo da tab inativa, on hover */
-  color: #ffffff !important;
+    background-color: #0c4873 !important; /* Cor do plano de fundo da tab inativa, on hover */
+	color: #ffffff !important;
 }
 
 .mdc-tab--active {
-  background-color: #0c4873 !important;
-  /* Cor do plano de fundo da tab ativa */
-  border-top-left-radius: 7px;
-  border-top-right-radius: 7px;
+    background-color: #0c4873 !important; /* Cor do plano de fundo da tab ativa */
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
 }
 
 .mdc-tab__text-label {
-  color: #585858 !important;
-  /* Cor do texto da tab inativa */
-  text-transform: none !important;
-  font-family: 'Raleway', sans-serif;
-  font-weight: 500;
+    color: #585858 !important; /* Cor do texto da tab inativa */
+	text-transform: none !important;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 500;
 }
 
 .mdc-tab:hover .mdc-tab__text-label {
-  color: #ffffff !important;
-  /* Cor do texto da tab inativa, on hover */
+	color: #ffffff !important; /* Cor do texto da tab inativa, on hover */
 }
 
 .mdc-tab--active .mdc-tab__text-label {
-  color: #ffffff !important;
-  /* Cor do texto da tab ativa */
-  text-transform: none !important;
-  font-family: 'Raleway', sans-serif;
-  font-weight: 500;
+    color: #ffffff !important; /* Cor do texto da tab ativa */
+	text-transform: none !important;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 500;
 }
 
 .mdc-tab-indicator .mdc-tab-indicator__content--underline {
-  border-top-width: 0px !important;
+    border-top-width: 0px !important;
 }
 
 
@@ -385,7 +342,6 @@
 .transition-up {
   transition-duration: 500ms;
 }
-
 /* .outbound-down {
   -webkit-transform: translateY(210px); 
   transform: translateY(175px);
@@ -401,3 +357,4 @@
 .transition-up {
   transition-duration: 500ms;
 } */
+
