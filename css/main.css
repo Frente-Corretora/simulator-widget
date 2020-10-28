@@ -1,23 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
   /* Typography */
-  body {
-    font-family: 'Raleway', sans-serif;        
+  #simulator-container {
+    font-family: 'Raleway', sans-serif;
     color: #898989;
   }
-
-  p {
+  
+  #simulator-container p {
     font-size: 12px !important;
   }
 
-  p.beneficiary  {
+  #simulator-container p.beneficiary  {
     color: #0c4873; /* Cor do texto do label que fica acima de cada select. Exemplo: "Tipo de remessa" */
     font-weight: 700;
-	font-size: 15px;
+	  font-size: 15px;
   }
 
   /* Global label */
-  .global-label {
+  #simulator-container .global-label {
     background-color: #0c4873; /* Cor de fundo do label global, que exibe o ícone da moeda BRL escrito "Real" */
     color: #ffffff; /* Cor do texto do label global */
     font-weight: 500;
@@ -28,16 +28,20 @@
     height: 100%
   }
 
+  #simulator-container .mdc-tab__text-label {
+    font-size: 15px !important;
+  }
+
   /* Label for currencies Symbol */
-  .label-symbol {
+  #simulator-container .label-symbol {
     font-size: 15px; 
     font-weight: 600;
-	color: #8a8888;
+	  color: #8a8888;
     /* Exibe o código de cada moeda ao lado do valor. Exemplo: USD, EUR, BRL */
   }
 
   /*  Flag icon BRL */
-  .br-flag {
+  #simulator-container .br-flag {
     width: 25px;
     height: 25px;
     float: left;
@@ -62,8 +66,8 @@
   i.fas,
   i.far,
   i.fab {
-  color: #0098a4; /* Define a cor dos ícones que exibe as informações de taxas. Exemplo: VET, COTAÇÃO... */
-}
+    color: #0098a4; /* Define a cor dos ícones que exibe as informações de taxas. Exemplo: VET, COTAÇÃO... */
+  }
 
 /*
 *****************************************************************

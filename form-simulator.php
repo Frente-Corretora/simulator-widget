@@ -2,69 +2,68 @@
 
 ?>
 
- <!-- Init Materialize and Material components: TAB AND SELECT-->
+<!-- Init Materialize and Material components: TAB AND SELECT-->
 <script>
-	// Instance selects
-  	window.initSelects = () => {
+  // Instance selects
+  window.initSelects = () => {
     window.remittance = window.mdc.select.MDCSelect.attachTo(document.getElementById('remittance-ul'));
     window.beneficiary = window.mdc.select.MDCSelect.attachTo(document.getElementById('beneficiary-ul'));
     window.remittanceType = window.mdc.select.MDCSelect.attachTo(document.getElementById('remittance-type-ul'));
     window.merchant = window.mdc.select.MDCSelect.attachTo(document.getElementById('merchant-ul'));
     window.exchange = window.mdc.select.MDCSelect.attachTo(document.getElementById('exchange-ul'));
-		
-	// Instance TABS
-	var tabBar = new mdc.tabBar.MDCTabBar(document.querySelector('.mdc-tab-bar'));
+
+    // Instance TABS
+    var tabBar = new mdc.tabBar.MDCTabBar(document.querySelector('.mdc-tab-bar'));
     var contentEls = document.querySelectorAll('.content');
     tabBar.listen('MDCTabBar:activated', function (event) {
       // Hide currently-active content
       document.querySelector('.content--active').classList.remove('content--active');
       // Show content for newly-activated tab
       contentEls[event.detail.index].classList.add('content--active');
-    }); 
-		
-	// Instance Tooltip
-	var elems = document.querySelectorAll('.tooltipped');
-	var instances = M.Tooltip.init(elems, {});
+    });
+
+    // Instance Tooltip
+    var elems = document.querySelectorAll('.tooltipped');
+    var instances = M.Tooltip.init(elems, {});
   }
 </script>
 
-  <!-- Wrap -->
-  <div class="row">
-    <div class="col s12" style="border-bottom: 1px solid #8a8888; padding: 0;">
-	  <div class="mdc-tab-bar" role="tablist">
-		<div class="mdc-tab-scroller">
-		  <div class="mdc-tab-scroller__scroll-area">
-			<div class="mdc-tab-scroller__scroll-content">
-			  <button class="mdc-tab mdc-tab--active" role="tab" aria-selected="true" tabindex="0">
-				<span class="mdc-tab__content">
-				  <span class="mdc-tab__text-label">Remessa</span>
-				</span>
-				<span class="mdc-tab-indicator mdc-tab-indicator--active">
-				  <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
-				</span>
-				<span class="mdc-tab__ripple"></span>
-			  </button>
-			  <button class="mdc-tab mdc-tab" role="tab" aria-selected="true" tabindex="0">
-				<span class="mdc-tab__content">
-				  <span class="mdc-tab__text-label">Papel Moeda</span>
-				</span>
-				<span class="mdc-tab-indicator mdc-tab-indicator">
-				  <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
-				</span>
-				<span class="mdc-tab__ripple"></span>
-			  </button>
-			</div>
-		  </div>
+<!-- Wrap -->
+<div id="simulator-container" class="row">
+
+  <div class="col s12" style="border-bottom: 1px solid #8a8888; padding: 0;">
+    <div class="mdc-tab-bar" role="tablist">
+      <div class="mdc-tab-scroller">
+        <div class="mdc-tab-scroller__scroll-area">
+          <div class="mdc-tab-scroller__scroll-content">
+            <button class="mdc-tab mdc-tab--active" role="tab" aria-selected="true" tabindex="0">
+              <span class="mdc-tab__content">
+                <span class="mdc-tab__text-label">Remessa</span>
+              </span>
+              <span class="mdc-tab-indicator mdc-tab-indicator--active">
+                <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+              </span>
+              <span class="mdc-tab__ripple"></span>
+            </button>
+            <button class="mdc-tab mdc-tab" role="tab" aria-selected="true" tabindex="0">
+              <span class="mdc-tab__content">
+                <span class="mdc-tab__text-label">Papel Moeda</span>
+              </span>
+              <span class="mdc-tab-indicator mdc-tab-indicator">
+                <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+              </span>
+              <span class="mdc-tab__ripple"></span>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-    </div>
 
-    <!----------------------------- Remittance Content ----------------------------->
-    <div class="col s12">
-
-	<div class="content content--active">
-	
-		<form id="remittance">
+  <!----------------------------- Remittance Content ----------------------------->
+  <div class="col s12">
+    <div class="content content--active">
+      <form id="remittance">
         <!-- Column 1 & 2: Label for remittance type and beneficiary -->
         <div class="row" style="margin-top: 1vw;">
           <!-- Remittance type -->
@@ -134,22 +133,22 @@
           <div class="col s12" style="margin-top: -3px; margin-bottom: -3px; padding-left: 38px;
           padding-right: 38px;">
             <p><i class="fas fa-info-circle tooltipped" data-position="top"
-              data-tooltip="É a cotação atual do mercado."></i> Cotação = R$
-            <span id="priceWithoutTax"></span>
+                data-tooltip="É a cotação atual do mercado."></i> Cotação = R$
+              <span id="priceWithoutTax"></span>
             </p>
 
             <p><i class="fas fa-info-circle tooltipped" data-position="top"
-              data-tooltip="Tarifa bancária cobrada pela utilização do sistema bancário internacional."></i>
-            Tarifa Bancária = R$ <span id="bankFee"></span></p>
+                data-tooltip="Tarifa bancária cobrada pela utilização do sistema bancário internacional."></i>
+              Tarifa Bancária = R$ <span id="bankFee"></span></p>
 
             <p><i class="fas fa-info-circle tooltipped" data-position="top"
-              data-tooltip="Significa Imposto sob operações financeiras e essa tarifa é retida pela Receita Federal."></i>
-            IOF (<span id="remittance-iof"></span>%) = R$ <span id="remittance-with-iof"></span>
+                data-tooltip="Significa Imposto sob operações financeiras e essa tarifa é retida pela Receita Federal."></i>
+              IOF (<span id="remittance-iof"></span>%) = R$ <span id="remittance-with-iof"></span>
             </p>
 
             <p><i class="fas fa-info-circle tooltipped" data-position="top"
-              data-tooltip="Esse é o valor final da cotação, somada com todas as tarifas e impostos."></i> VET = R$
-            <span id="priceWithTax"></span>
+                data-tooltip="Esse é o valor final da cotação, somada com todas as tarifas e impostos."></i> VET = R$
+              <span id="priceWithTax"></span>
             </p>
           </div>
         </div>
@@ -183,16 +182,16 @@
           </div>
         </div>
       </form>
-	</div>
     </div>
+  </div>
 
 
 
 
-    <!----------------------------- Paper Money ----------------------------->
-    <div class="col s12">
- 
-	<div class="content">
+  <!----------------------------- Paper Money ----------------------------->
+  <div class="col s12">
+
+    <div class="content">
       <form id="exchange">
 
         <!-- Column 1 & 2: Location/Agent label and location/agent selector -->
@@ -252,13 +251,13 @@
             </p>
 
             <p class="iof"><i class="fas fa-info-circle tooltipped" data-position="top"
-              data-tooltip="É o imposto federal incidente nas trocas de moedas para fins turísticos."></i> IOF (<span
-              id="exchange-iof"></span>%) = R$
+                data-tooltip="É o imposto federal incidente nas trocas de moedas para fins turísticos."></i> IOF (<span
+                id="exchange-iof"></span>%) = R$
               <span id="exchange-with-iof"></span></p>
 
             <p class="iof"><i class="fas fa-info-circle tooltipped" data-position="top"
-              data-tooltip="Valor final da cotação, somada com todos os impostos e tarifas."></i> VET = R$ <span
-              id="vet-exchange"></span>
+                data-tooltip="Valor final da cotação, somada com todos os impostos e tarifas."></i> VET = R$ <span
+                id="vet-exchange"></span>
             </p>
           </div>
         </div>
@@ -288,9 +287,8 @@
           </div>
         </div>
       </form>
-  	</div>
-
     </div>
-	  
-  </div> <!-- END MAIN ROW -->
 
+  </div>
+
+</div> <!-- END MAIN ROW -->
