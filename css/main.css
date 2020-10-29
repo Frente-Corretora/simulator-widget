@@ -48,11 +48,11 @@
     /* Define o tamanho do ícone da moeda BRL */
   }
 
-  #brl {
+  #simulator-container  #brl {
     padding: 8px 8px; /* Define o posicionamento do texto "Real" */
   }
 
-  #brl-coin {
+  #simulator-container  #brl-coin {
     display: flex;
     justify-content: start;
     align-items: center;
@@ -63,9 +63,9 @@
   }
 
   /* Icons Font Awesome */
-  i.fas,
-  i.far,
-  i.fab {
+  #simulator-container  i.fas,
+  #simulator-container  i.far,
+  #simulator-container  i.fab {
     color: #0098a4; /* Define a cor dos ícones que exibe as informações de taxas. Exemplo: VET, COTAÇÃO... */
   }
 
@@ -74,15 +74,15 @@
 *
 
 /* Material: Select component  */
-.mdc-select:not(.mdc-select--disabled) .mdc-select__anchor {
+#simulator-container  .mdc-select:not(.mdc-select--disabled) .mdc-select__anchor {
   background-color: transparent !important;  /* Selects transparentes: Tipo de remessa, beneficiário, cidade */
 }
 
-.mdc-select {
+#simulator-container  .mdc-select {
   position: relative;
   display: flex !important;
 }
-.mdc-select__selected-text {
+#simulator-container  .mdc-select__selected-text {
   min-width: 100% !important;
   font-family: 'Raleway', sans-serif !important;
   font-weight: 500 !important;
@@ -99,19 +99,19 @@
   padding-right: 26px !important;
 }
 
-#remittance-ul .mdc-select__selected-text {
+#simulator-container  #remittance-ul .mdc-select__selected-text {
   padding-left: 0px !important;
 }
 
-#exchange-ul .mdc-select__selected-text {
+#simulator-container  #exchange-ul .mdc-select__selected-text {
   padding-left: 0px !important;
 }
 
-#remittance-value-input,
-#remittance-result-input,
-#exchange-value-input,
-#exchange-result-input,
-.square-input {
+#simulator-container  #remittance-value-input,
+#simulator-container  #remittance-result-input,
+#simulator-container  #exchange-value-input,
+#simulator-container  #exchange-result-input,
+#simulator-container  .square-input {
   border-top: 1px solid #8a8888;
   border-bottom: 1px solid #8a8888;
   display: flex;
@@ -120,75 +120,75 @@
   flex-direction: row;
 }
 
-#brl-column-rm,
-#usd-column-rm,
-#brl-column-pm,
-#usd-column-pm {
+#simulator-container #brl-column-rm,
+#simulator-container #usd-column-rm,
+#simulator-container #brl-column-pm,
+#simulator-container #usd-column-pm {
   padding-right: 0px;
 }
 
-.mdc-select:not(.mdc-select--disabled) .mdc-select__selected-text {
+#simulator-container .mdc-select:not(.mdc-select--disabled) .mdc-select__selected-text {
   color: white !important; /* Cor do texto selecionado nos selects coloridos (Moedas) */
 }
 
-.mdc-list-item {
+#simulator-container .mdc-list-item {
   height: 69px !important;
 }
 
-.mdc-menu .mdc-list {
+#simulator-container .mdc-menu .mdc-list {
   color: white !important;  /* Cor do texto da lista nos selects coloridos (Moedas) */
   font-size: 15px !important; 
   font-family: 'Raleway', sans-serif;
   font-weight: 500 !important;
 }
 
-.mdc-menu-surface {
+#simulator-container .mdc-menu-surface {
   background-color: #0c4873 !important; /* Cor do plano de fundo das listas nos selects coloridos (Moedas) */
 }
 
-.mdc-select__menu .mdc-list .mdc-list-item--selected {
+#simulator-container .mdc-select__menu .mdc-list .mdc-list-item--selected {
   color: white !important;  /* Cor do texto selecionado nos selects coloridos (Moedas) */
 }
 
-.mdc-select:not(.mdc-select--disabled):hover .mdc-line-ripple::before {
+#simulator-container .mdc-select:not(.mdc-select--disabled):hover .mdc-line-ripple::before {
   border-bottom-color: transparent !important;
 }
-.mdc-select:not(.mdc-select--disabled) .mdc-line-ripple::before {
-  border-bottom-color: transparent !important;
-}
-
-.mdc-select:not(.mdc-select--disabled).mdc-select--focused .mdc-line-ripple::after {
+#simulator-container .mdc-select:not(.mdc-select--disabled) .mdc-line-ripple::before {
   border-bottom-color: transparent !important;
 }
 
-.mdc-line-ripple::before {
+#simulator-container .mdc-select:not(.mdc-select--disabled).mdc-select--focused .mdc-line-ripple::after {
+  border-bottom-color: transparent !important;
+}
+
+#simulator-container .mdc-line-ripple::before {
   border-bottom-width: 0px;
   z-index: 1;
 }
 
 /*  Dropdown Icon */
-#caret-transparent {
+#simulator-container #caret-transparent {
   background-image: url('data:image/svg+xml,<svg%20width%3D"10px"%20height%3D"5px"%20viewBox%3D"7%2010%2010%205"%20version%3D"1.1"%20xmlns%3D"http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg"%20xmlns%3Axlink%3D"http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink">%0A%20%20%20%20<polygon%20id%3D"Shape"%20stroke%3D"none"%20fill%3D"%23585858"%20fill-rule%3D"evenodd"%20opacity%3D"1"%20points%3D"7%2010%2012%2015%2017%2010"><%2Fpolygon>%0A<%2Fsvg>') !important;
   right: -6px !important;
 } /* Ícone dropdown CINZA para select transparente */
 
-.mdc-select__dropdown-icon {
+#simulator-container .mdc-select__dropdown-icon {
   background-image: url('data:image/svg+xml,<svg%20width%3D"10px"%20height%3D"5px"%20viewBox%3D"7%2010%2010%205"%20version%3D"1.1"%20xmlns%3D"http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg"%20xmlns%3Axlink%3D"http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink">%0A%20%20%20%20<polygon%20id%3D"Shape"%20stroke%3D"none"%20fill%3D"%23ffffff"%20fill-rule%3D"evenodd"%20opacity%3D"1"%20points%3D"7%2010%2012%2015%2017%2010"><%2Fpolygon>%0A<%2Fsvg>') !important;
   right: 6px !important;
 }  /* Ícone dropdown BRANCO para select colorido */
 
-.mdc-ripple-upgraded {
+#simulator-container .mdc-ripple-upgraded {
   width: 100%;
 }
 
 /*  Remittance beneficiary */
-#beneficiary-ul .mdc-select__selected-text {
+#simulator-container #beneficiary-ul .mdc-select__selected-text {
   background-color: transparent !important; /* Cor de fundo nos selects transparentes (Beneficiário) */
   color: #585858 !important; /* Cor do texto selecionado nos selects transparentes (Beneficiário) */
   border-bottom: 1px solid #ccc;
 }
 
-#beneficiary-ul .mdc-menu .mdc-list {
+#simulator-container #beneficiary-ul .mdc-menu .mdc-list {
   color: #585858 !important; /* Cor do texto da lista nos selects transparentes (Beneficiário) */
   font-size: 15px !important;
   font-weight: 500 !important;  
@@ -196,169 +196,169 @@
   background-color: #f0f0f0; /* Cor de fundo da lista nos selects transparentes (Beneficiário) */
 }
 
-#beneficiary-ul .mdc-select__menu .mdc-list .mdc-list-item--selected {
+#simulator-container #beneficiary-ul .mdc-select__menu .mdc-list .mdc-list-item--selected {
   color: #585858 !important; /* Cor do texto selecionado na lista dos selects transparentes (Beneficiário) */
 }
 
-.mdc-select__menu {
+#simulator-container .mdc-select__menu {
   width: 100%;
 }
 
 /* Merchant Select */
-#merchant-ul .mdc-select__selected-text {
+#simulator-container #merchant-ul .mdc-select__selected-text {
   background-color: transparent !important; /* Cor de fundo nos selects transparentes (Cidade) */
   color: #585858 !important; /* Cor do texto selecionado nos selects transparentes (Cidade) */
   border-bottom: 1px solid #ccc;
 }
 
-#merchant-ul .mdc-menu .mdc-list {
+#simulator-container #merchant-ul .mdc-menu .mdc-list {
   color: #585858 !important; /* Cor do texto na lista nos selects transparentes (Cidade) */
   font-size: 15px !important;
   font-family: 'Raleway', sans-serif;
   background-color: #f0f0f0; /* Cor de fundo da lista nos selects transparentes (Cidade) */
 }
 
-#merchant-ul .mdc-select__menu .mdc-list .mdc-list-item--selected {
+#simulator-container #merchant-ul .mdc-select__menu .mdc-list .mdc-list-item--selected {
   color: #585858 !important; /* Cor do texto selecionado na lista nos selects transparentes (Cidade) */
 }
 
 /* Remittance Type */
-#remittance-type-ul .mdc-select__selected-text {
+#simulator-container #remittance-type-ul .mdc-select__selected-text {
   background-color: transparent !important; /* Cor de fundo nos selects transparentes (Tipo de remessa) */
   color: #585858 !important; /* Cor do texto selecionado nos selects transparentes (Tipo de remessa) */
   border-bottom: 1px solid #ccc;
 }
 
-#remittance-type-ul .mdc-menu .mdc-list {
+#simulator-container #remittance-type-ul .mdc-menu .mdc-list {
   color: #585858 !important; /* Cor do texto na lista nos selects transparentes (Tipo de remessa) */
   font-size: 15px !important;
   font-family: 'Raleway', sans-serif;
   background-color: #f0f0f0; /* Cor de fundo da lista nos selects transparentes (Tipo de remessa) */
 }
 
-#remittance-type-ul .mdc-select__menu .mdc-list .mdc-list-item--selected {
+#simulator-container #remittance-type-ul .mdc-select__menu .mdc-list .mdc-list-item--selected {
   color: #585858 !important; /* Cor do texto selecionado na lista nos selects transparentes (Tipo de remessa) */
 }
 
 /* Remove all styles from material pattern */
-.mdc-line-ripple--active {
+#simulator-container .mdc-line-ripple--active {
 background-color: transparent !important;
 }
 
-.mdc-select:not(.mdc-select--disabled) .mdc-select__selected-text {
+#simulator-container .mdc-select:not(.mdc-select--disabled) .mdc-select__selected-text {
 border-bottom-color: transparent !important;
 }
 
-.mdc-select:not(.mdc-select--disabled):hover .mdc-line-ripple::before {
+#simulator-container .mdc-select:not(.mdc-select--disabled):hover .mdc-line-ripple::before {
   border: none;
   border-bottom-color: transparent !important;
 }
-.mdc-select:not(.mdc-select--disabled) .mdc-line-ripple::before {
+#simulator-container .mdc-select:not(.mdc-select--disabled) .mdc-line-ripple::before {
   border-bottom-color: transparent !important;
 }
 
-.mdc-select:not(.mdc-select--disabled).mdc-select--focused .mdc-line-ripple::after {
+#simulator-container .mdc-select:not(.mdc-select--disabled).mdc-select--focused .mdc-line-ripple::after {
   border: none;
   border-bottom-color: transparent !important;
 }
 
-.mdc-line-ripple::before {
+#simulator-container .mdc-line-ripple::before {
   border: none;
   border-bottom-width: 0px;
   z-index: 1;
 }
 
 /* TABS */
-.content {
+#simulator-container .content {
 	display: none;
 }
 
-.content--active {
+#simulator-container .content--active {
 	display: block;
 }
 
-.mdc-tab {
+#simulator-container .mdc-tab {
 	font-family: 'Raleway', sans-serif !important;
 	height: 52px !important;
 	background-color: #dfdfdf !important; /* Cor do plano de fundo da tab inativa */
-    border-top-left-radius: 7px;
-    border-top-right-radius: 7px;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
 	flex: 0 0 auto !important;
 }
 
-.mdc-tab:nth-last-child(odd) {
+#simulator-container .mdc-tab:nth-last-child(odd) {
 	margin-left: 13px;
 }
 
-.mdc-tab:hover {
+#simulator-container .mdc-tab:hover {
 	color: #ffffff !important;
 }
 
-.mdc-tab:hover {
-    background-color: #0c4873 !important; /* Cor do plano de fundo da tab inativa, on hover */
+#simulator-container .mdc-tab:hover {
+  background-color: #0c4873 !important; /* Cor do plano de fundo da tab inativa, on hover */
 	color: #ffffff !important;
 }
 
-.mdc-tab--active {
-    background-color: #0c4873 !important; /* Cor do plano de fundo da tab ativa */
-    border-top-left-radius: 7px;
-    border-top-right-radius: 7px;
+#simulator-container .mdc-tab--active {
+  background-color: #0c4873 !important; /* Cor do plano de fundo da tab ativa */
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
 }
 
-.mdc-tab__text-label {
-    color: #585858 !important; /* Cor do texto da tab inativa */
+#simulator-container .mdc-tab__text-label {
+  color: #585858 !important; /* Cor do texto da tab inativa */
 	text-transform: none !important;
 	font-family: 'Raleway', sans-serif;
 	font-weight: 500;
 }
 
-.mdc-tab:hover .mdc-tab__text-label {
+#simulator-container .mdc-tab:hover .mdc-tab__text-label {
 	color: #ffffff !important; /* Cor do texto da tab inativa, on hover */
 }
 
-.mdc-tab--active .mdc-tab__text-label {
-    color: #ffffff !important; /* Cor do texto da tab ativa */
+#simulator-container .mdc-tab--active .mdc-tab__text-label {
+  color: #ffffff !important; /* Cor do texto da tab ativa */
 	text-transform: none !important;
 	font-family: 'Raleway', sans-serif;
 	font-weight: 500;
 }
 
-.mdc-tab-indicator .mdc-tab-indicator__content--underline {
-    border-top-width: 0px !important;
+#simulator-container .mdc-tab-indicator .mdc-tab-indicator__content--underline {
+  border-top-width: 0px !important;
 }
 
 
 
 /* Apply transform effect between outbound and inbound select */
 /* Se atente para os pixels das posições, pois pode variar de acordo com o local em que você posicionar o seu simulador. */
-.outbound-down {
-  -webkit-transform: translateY(233px);
-  transform: translateY(233px);
+#simulator-container .outbound-down {
+  -webkit-transform: translateY(215px);
+  transform: translateY(215px);
   transition-duration: 500ms;
 }
 
-.inbound-up {
-  -webkit-transform: translateY(-233px);
-  transform: translateY(-233px);
+#simulator-container .inbound-up {
+  -webkit-transform: translateY(-215px);
+  transform: translateY(-215px);
   transition-duration: 500ms;
 }
 
-.transition-up {
+#simulator-container .transition-up {
   transition-duration: 500ms;
 }
-/* .outbound-down {
+/* #simulator-container .outbound-down {
   -webkit-transform: translateY(210px); 
   transform: translateY(175px);
   transition-duration: 500ms;
 }
 
-.inbound-up {
+#simulator-container .inbound-up {
   -webkit-transform: translateY(-210px);
   transform: translateY(-182px);
   transition-duration: 500ms;
 }
 
-.transition-up {
+#simulator-container .transition-up {
   transition-duration: 500ms;
 } */
 
