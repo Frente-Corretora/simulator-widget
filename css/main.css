@@ -7,6 +7,7 @@
   }
   
   #simulator-container p {
+    font-family: 'Raleway', sans-serif;
     font-size: 12px !important;
   }
 
@@ -327,8 +328,6 @@ border-bottom-color: transparent !important;
   border-top-width: 0px !important;
 }
 
-
-
 /* Apply transform effect between outbound and inbound select */
 /* Se atente para os pixels das posições, pois pode variar de acordo com o local em que você posicionar o seu simulador. */
 #simulator-container .outbound-down {
@@ -361,3 +360,4 @@ border-bottom-color: transparent !important;
 #simulator-container .transition-up {
   transition-duration: 500ms;
 } */
+
