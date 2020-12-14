@@ -7,8 +7,8 @@ const remittanceData = {
     label: 'Recebimento',
     value: 'inbound',
     options: [
-      { label: 'Outra pessoa', value: 'IR002' },
-      { label: 'Eu mesmo', value: 'IR001' },
+      { label: 'Outra pessoa', value: 'MAINTENANCE' },
+      { label: 'Eu mesmo', value: 'AVAILABILITY' },
       { label: 'Eu mesmo - Google AdSense', value: 'ADSENSE' }
     ],
   },
@@ -16,8 +16,9 @@ const remittanceData = {
     label: 'Envio',
     value: 'outbound',
     options: [
-      { label: 'Outra pessoa', value: 'IR002' },
-      { label: 'Eu mesmo', value: 'IR001' }
+      { label: 'Outra pessoa', value: 'MAINTENANCE' },
+      { label: 'Eu mesmo', value: 'AVAILABILITY' },
+      { label: 'Pagamento de Serviços', value: 'SERVICES' }
     ]
   }
 };
