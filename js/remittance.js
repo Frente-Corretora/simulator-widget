@@ -21,6 +21,12 @@ async function getRemittanceData(reverse = true, slide = false) {
   let purposeCode = window.beneficiary.value;
   let remittanceType = window.remittanceType.value;
   let remittanceBRLValue = '';
+  
+  if (purposeCode === 'SERVICES') {
+    _$('span#IR').show()
+  } else {
+    _$('span#IR').hide()
+  }
 
   // Reverse route
   if (!reverse) {

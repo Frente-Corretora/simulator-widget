@@ -143,7 +143,7 @@
 
             <p><i class="fas fa-info-circle tooltipped" data-position="top"
                 data-tooltip="Significa Imposto sob operações financeiras e essa tarifa é retida pela Receita Federal."></i>
-              IOF (<span id="remittance-iof"></span>%) = R$ <span id="remittance-with-iof"></span>
+              IOF (<span id="remittance-iof"></span>%) = R$ <span id="remittance-with-iof"></span><span id="IR"> + IR</span>
             </p>
 
             <p><i class="fas fa-info-circle tooltipped" data-position="top"
