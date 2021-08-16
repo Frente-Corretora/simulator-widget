@@ -36,9 +36,7 @@ let _$ = jQuery;
 
     // Get request if Paper Money tab is active
     window.merchant.listen('MDCSelect:change', () => {
-      if ($('#exchange-tab').hasClass("active")) {
-        simulateExchange();
-      }
+      simulateExchange();
     });
 
     $('input#paper-money-value').on('change keyup', function () {

@@ -12,7 +12,7 @@
 			const query = $('#exchange').serialize();
 			const currencyCode = window.exchange.value;
 			const merchantId = window.merchant.value;
-			const url = `https://iamsimple.com.br/${correspondent_identifier}/app/checkout/paper-money?${query}&agentId=${merchantId}&productId=${currencyCode}`;
+			const url = `https://iamsimple.com.br/${correspondent_identifier}/app/checkout/paper-money?${query}&agentId=${merchantId}&productId=${currencyCode}&paper-money=true`;
 			window.open(url, '_blank');
 		});
 
