@@ -28,7 +28,7 @@
 			const query = $('#exchange').serialize();
 			const currencyCode = window.exchange.value;
 			const merchantId = window.merchant.value;
-			const url = `https://iamsimple.com.br/${correspondent_identifier}/?simulator=paper-money&${formatValueForQueryPattern(query)}&receiveMerchantId=${merchantId}&receiveCurrency=${currencyCode}&reverse=true`;
+			const url = `https://iamsimple.com.br/${correspondent_identifier}/?simulator=paper-money&${formatValueForQueryPattern(query)}&receiveMerchantId=${merchantId}&receiveCurrency=${currencyCode}`;
 			window.open(url, '_blank');
 		});
 
