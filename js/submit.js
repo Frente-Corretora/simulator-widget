@@ -10,7 +10,6 @@
 					const formattedValue = value.includes('.') ? value.replace('.', '') : value + '00';
 					return `${key}=${formattedValue}`;
 				}
-				return `${key}=${value}`;
 			})
 			.join('&');
 	
