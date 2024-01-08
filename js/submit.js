@@ -27,7 +27,7 @@
 			const query = $('#exchange').serialize();
 			const currencyCode = window.exchange.value;
 			const merchantId = window.merchant.value;
-			const url = `https://iamsimple.com.br/${correspondent_identifier}/?simulator=paper-money&${formatValueForQueryPattern(query)}&receiveMerchantId=${merchantId}&receiveCurrency=${currencyCode}`;
+			const url = `https://iamsimple.com.br/${correspondent_identifier}/?simulator=paper-money&${formatValueForQueryPattern(query)}&receiveMerchantId=${merchantId}&currencyCode=${currencyCode}`;
 			window.open(url, '_blank');
 		});
 
@@ -40,7 +40,7 @@
 			const currencyCode = window.remittance.value;
 			const purposeCode = window.beneficiary.value;
 			const remittanceType = window.remittanceType.value;
-			const url = `https://iamsimple.com.br/${correspondent_identifier}/?simulator=remittance&${formatValueForQueryPattern(query)}&receivePurposeCode=${purposeCode}&receiveCurrency=${currencyCode}&remittanceType=${remittanceType}&reverse=true`;
+			const url = `https://iamsimple.com.br/${correspondent_identifier}/?simulator=remittance&${formatValueForQueryPattern(query)}&receivePurposeCode=${purposeCode}&currencyCode=${currencyCode}&remittanceType=${remittanceType}&reverse=true`;
 			window.open(url, '_blank');
 		});
 
