@@ -10,7 +10,9 @@
 					const formattedValue = value.includes('.') ? value.replace('.', '') : value + '00';
 					return `${key}=${formattedValue}`;
 				}
+				return null;
 			})
+			.filter((entry) => entry !== null) 
 			.join('&');
 	
 		return formattedQueryString;
