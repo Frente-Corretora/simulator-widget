@@ -236,7 +236,7 @@
           <!-- Value input foreign currency -->
           <div class="col s6" id="exchange-value-input">
             <label id="currency-symbol-exchange-value" class="label-symbol">USD</label>
-            <input id="paper-money-value" type="number" name="productAmount" min="0" value="1000">
+            <input id="paper-money-value" type="number" name="value" min="0" value="1000">
           </div>
         </div>
 

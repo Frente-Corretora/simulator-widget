@@ -1,6 +1,22 @@
 (function ($) {
-
 	"use strict";
+
+	const formatValueForQueryPattern = (queryString) => {
+		const params = new URLSearchParams(queryString);
+	
+		const formattedQueryString = Array.from(params.entries())
+			.map(([key, value]) => {
+				if (/^\d+(\.\d+)?$/.test(value) && !key.includes('BRL')) {
+					const formattedValue = value.includes('.') ? value.replace('.', '') : value + '00';
+					return `${key}=${formattedValue}`;
+				}
+				return `${key}=${value}`;
+			})
+			.join('&');
+	
+		return formattedQueryString;
+	};
+	
 
 	$(document).ready(function () {
 		/**
@@ -12,7 +28,7 @@
 			const query = $('#exchange').serialize();
 			const currencyCode = window.exchange.value;
 			const merchantId = window.merchant.value;
-			const url = `https://iamsimple.com.br/${correspondent_identifier}/?simulator=paperMoney&${query}&receiveMerchantId=${merchantId}&receiveCurrency=${currencyCode}`;
+			const url = `https://iamsimple.com.br/${correspondent_identifier}/?simulator=paper-money&${formatValueForQueryPattern(query)}&receiveMerchantId=${merchantId}&receiveCurrency=${currencyCode}`;
 			window.open(url, '_blank');
 		});
 
@@ -25,7 +41,7 @@
 			const currencyCode = window.remittance.value;
 			const purposeCode = window.beneficiary.value;
 			const remittanceType = window.remittanceType.value;
-			const url = `https://iamsimple.com.br/${correspondent_identifier}/?simulator=remittance&${query}&receivePurposeCode=${purposeCode}&receiveCurrency=${currencyCode}&remittanceType=${remittanceType}`;
+			const url = `https://iamsimple.com.br/${correspondent_identifier}/?simulator=remittance&${formatValueForQueryPattern(query)}&receivePurposeCode=${purposeCode}&receiveCurrency=${currencyCode}&remittanceType=${remittanceType}&reverse=true`;
 			window.open(url, '_blank');
 		});
 
