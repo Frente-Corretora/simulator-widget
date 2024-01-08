@@ -6,7 +6,7 @@
 	
 		const formattedQueryString = Array.from(params.entries())
 			.map(([key, value]) => {
-				if (/^\d+(\.\d+)?$/.test(value) && !key.includes('BRL')) {
+				if (/^\d+(\.\d+)?$/.test(value) && !key.includes('foreignCurrency')) {
 					const formattedValue = value.includes('.') ? value.replace('.', '') : value + '00';
 					return `${key}=${formattedValue}`;
 				}
@@ -28,7 +28,7 @@
 			const query = $('#exchange').serialize();
 			const currencyCode = window.exchange.value;
 			const merchantId = window.merchant.value;
-			const url = `https://iamsimple.com.br/${correspondent_identifier}/?simulator=paper-money&${formatValueForQueryPattern(query)}&receiveMerchantId=${merchantId}&receiveCurrency=${currencyCode}`;
+			const url = `https://iamsimple.com.br/${correspondent_identifier}/?simulator=paper-money&${formatValueForQueryPattern(query)}&receiveMerchantId=${merchantId}&receiveCurrency=${currencyCode}&reverse=true`;
 			window.open(url, '_blank');
 		});
 
