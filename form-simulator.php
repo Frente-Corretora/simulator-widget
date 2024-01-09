@@ -124,7 +124,7 @@
           <!-- Value input-->
           <div class="col s6" id="remittance-value-input">
             <label id="currency-symbol-remittance-brl-value" class="label-symbol">R$</label>
-            <input id="remittance-value" type="number" name="remittanceAmountBRL" step="0.01" min="0" value="1200">
+            <input id="remittance-value" type="number" name="remittanceAmount" step="0.01" min="0" value="1200">
           </div>
         </div>
 
@@ -171,7 +171,7 @@
           <!-- Remittance result foreign currency input -->
           <div class="col s6" id="remittance-result-input">
             <label id="currency-symbol-remittance-value" class="label-symbol">USD</label>
-            <input id="remittance-result" type="text" step="0.01" min="0" name="remittanceAmount">
+            <input id="remittance-result" type="text" step="0.01" min="0" name="foreignCurrency">
           </div>
         </div>
 
@@ -236,7 +236,7 @@
           <!-- Value input foreign currency -->
           <div class="col s6" id="exchange-value-input">
             <label id="currency-symbol-exchange-value" class="label-symbol">USD</label>
-            <input id="paper-money-value" type="number" name="productAmount" min="0" value="1000">
+            <input id="paper-money-value" type="number" name="value" min="0" value="1000">
           </div>
         </div>
 

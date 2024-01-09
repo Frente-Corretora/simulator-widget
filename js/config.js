@@ -19,7 +19,6 @@ const remittanceData = {
       { label: 'Outra pessoa', value: 'MAINTENANCE' },
       { label: 'Eu mesmo', value: 'AVAILABILITY' },
       { label: 'Pagamento de Serviços', value: 'SERVICES' },
-      { label: 'Pagamento de Estudos', value: 'STUDIES' }
     ]
   }
 };
