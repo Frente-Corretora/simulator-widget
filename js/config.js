@@ -5,7 +5,7 @@ const correspondent_identifier = 'frente';
 const remittanceData = {
   inbound: {
     label: 'Recebimento',
-    value: 'inbound',
+    value: 'INBOUND',
     options: [
       { label: 'Outra pessoa', value: 'MAINTENANCE' },
       { label: 'Eu mesmo', value: 'AVAILABILITY' },
@@ -14,7 +14,7 @@ const remittanceData = {
   },
   outbound: {
     label: 'Envio',
-    value: 'outbound',
+    value: 'OUTBOUND',
     options: [
       { label: 'Outra pessoa', value: 'MAINTENANCE' },
       { label: 'Eu mesmo', value: 'AVAILABILITY' },
