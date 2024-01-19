@@ -29,7 +29,7 @@
 			const query = $('#exchange').serialize();
 			const currencyCode = window.exchange.value;
 			const merchantId = window.merchant.value;
-			const url = `https://iamsimple.com.br/${correspondent_identifier}/?simulator=paper-money&${formatValueForQueryPattern(query)}&receiveMerchantId=${merchantId}&currencyCode=${currencyCode}`;
+			const url = `https://iamsimple.com.br/${correspondent_identifier}/?simulator=paperMoney&${formatValueForQueryPattern(query)}&receiveMerchantId=${merchantId}&currencyCode=${currencyCode}`;
 			window.open(url, '_blank');
 		});
 
