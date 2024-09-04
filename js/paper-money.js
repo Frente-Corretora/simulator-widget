@@ -127,7 +127,7 @@ async function simulateExchange(reverse = false) {
 
   const iofValue = (tax.iof.total.value / tax.iof.total.divisor);
   const vetValue = (price.withTax.value / price.withTax.divisor);
-  const quoatationValue = (price.withoutTax.value / price.withoutTax.divisor);
+  const quoatationValue = (currency.levelingRate.value / currency.levelingRate.divisor);
 
   // Paper Money result
   _$('input#paper-money-result').val(convertedValue.toFixed(2));

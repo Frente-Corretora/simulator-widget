@@ -8,7 +8,7 @@ class Exchange {
 
   // ********* Fetch currencies *********
 	async fetchData(agent) {
-		let url = `${this.baseUrl}/v1/exchanges/paper-money/currencies`;
+		let url = `${this.baseUrl}/v2/exchanges/paper-money/currencies`;
 
 		if (agent) {
 			url += `/${agent}`;
@@ -43,7 +43,7 @@ class Exchange {
 
   // ********* Paper Money request *********
 	async fetchPaperMoney(correspondentId, currencyCode, value, reverse = false) {
-		let url = `${this.baseUrl}/v1/exchanges/paper-money/quotations/${correspondentId}?currency=${currencyCode}&value=${value}&reverse=${reverse}`;
+		let url = `${this.baseUrl}/v2/exchanges/paper-money/quotations/${correspondentId}?currency=${currencyCode}&value=${value}&reverse=${reverse}`;
 		if ('fetch' in window) {
 			try {
 				const response = await fetch(url);
@@ -74,9 +74,9 @@ class Exchange {
 	async fetchRemittanceData(remittanceType = 'outbound', purposeCode = 'IR001', code = 'USD', value, reverse = true) {
 		let url = '';
 		if (reverse) {
-			url = `${this.baseUrl}/v1/exchanges/remittance/${remittanceType}/reverse?purposeCode=${purposeCode}&currency=${code}&correspondentId=${correspondent_id}&value=${value}`;
+			url = `${this.baseUrl}/v2/exchanges/remittance/${remittanceType}/reverse?purposeCode=${purposeCode}&currency=${code}&correspondentId=${correspondent_id}&value=${value}`;
 		} else {
-			url = `${this.baseUrl}/v1/exchanges/remittance/${remittanceType}/?purposeCode=${purposeCode}&currency=${code}&correspondentId=${correspondent_id}&value=${value}`;
+			url = `${this.baseUrl}/v2/exchanges/remittance/${remittanceType}/?purposeCode=${purposeCode}&currency=${code}&correspondentId=${correspondent_id}&value=${value}`;
 		}
 		if ('fetch' in window) {
 			try {
