@@ -98,7 +98,17 @@ async function simulateExchange(reverse = false) {
     return true;
   }
 
-  const { total: { withTax }, rounding, currency, tax, price } = await exchange.fetchPaperMoney(correspondentId, currencyCode, valueAsInteger, reverse);
+  const paperMoneyResponse = await exchange.fetchPaperMoney(correspondentId, currencyCode, valueAsInteger, reverse);
+
+  window.currentPaperMoneyQuotationId = paperMoneyResponse.id;
+
+  const {
+    total: { withTax },
+    rounding,
+    currency,
+    tax,
+    price
+  } = paperMoneyResponse;
 
   const minValue = currency.minToSell;
   const maxValue = currency.maxToSell;

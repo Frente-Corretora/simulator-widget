@@ -48,6 +48,10 @@ async function getRemittanceData(reverse = true, slide = false) {
     purposeCode = undefined;
   }
 
+  const remittanceResponse = await exchange.fetchRemittanceData(remittanceType, purposeCode, currencyCode, value, reverse);
+
+  window.currentRemittanceQuotationId = remittanceResponse.id;
+
   const {
     currency: {
       code,
@@ -65,7 +69,7 @@ async function getRemittanceData(reverse = true, slide = false) {
       withTax
     },
     clamp
-  } = await exchange.fetchRemittanceData(remittanceType, purposeCode, currencyCode, value, reverse);
+  } = remittanceResponse;
 
   const minValueRemittance = minValue;
   const maxValueRemittance = maxValue;
